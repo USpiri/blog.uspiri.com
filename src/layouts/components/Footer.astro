@@ -24,21 +24,21 @@ const resources: Link[] = [
 ---
 
 <footer
-  class="mb-8 text-neutral-500 dark:text-neutral-400 text-sm px-5 flex flex-col items-center gap-4"
+  class="mb-8 flex flex-col items-center gap-4 px-5 text-sm text-neutral-500 dark:text-neutral-400"
 >
-  <div class="flex items-center gap-4 flex-col sm:flex-row">
+  <div class="flex flex-col items-center gap-4 sm:flex-row">
     <section class="flex items-center gap-3">
       <div class="avatar"></div>
-      <a href="/" class="text-lg font-bold">Uriel Spiridione | Devlyz</a>
+      <a href="/" class="text-lg font-semibold">Uriel Spiridione | USpiri</a>
     </section>
-    <section class="flex gap-4 items-center">
+    <section class="flex items-center gap-4">
       <a
         href="/rss.xml"
         target="_blank"
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
         title="Rss"
       >
-        <RssIcon class="h-6" />
+        <RssIcon class="h-5" />
       </a>
       <a
         href="https://github.com/USpiri/"
@@ -46,7 +46,7 @@ const resources: Link[] = [
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
         title="Github"
       >
-        <GithubIcon class="h-6" />
+        <GithubIcon class="h-5" />
       </a>
       <a
         href="https://www.linkedin.com/in/urielspiridione/"
@@ -54,7 +54,7 @@ const resources: Link[] = [
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
         title="Linkedin"
       >
-        <LinkedinIcon class="h-6" />
+        <LinkedinIcon class="h-5" />
       </a>
       <a
         href="https://twitter.com/UrielSpiridione"
@@ -62,20 +62,20 @@ const resources: Link[] = [
         class="rounded-lg transition-all hover:scale-110 active:scale-90"
         title="X Twitter"
       >
-        <XTwitterIcon class="h-6" />
+        <XTwitterIcon class="h-5" />
       </a>
     </section>
   </div>
-  <div class="flex items-center flex-col gap-2">
+  <div class="flex flex-col items-center gap-2">
     <section>
-      <ul class="flex flex-wrap gap-x-3 justify-center">
+      <ul class="flex flex-wrap justify-center gap-x-3">
         <li><p class="font-medium">Web:</p></li>
         {
           web.map((link) => (
             <li>
               <a
                 href={link.path}
-                class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+                class="font-bold transition-all hover:text-neutral-700 dark:hover:text-neutral-400"
               >
                 {link.label}
               </a>
@@ -85,7 +85,7 @@ const resources: Link[] = [
       </ul>
     </section>
     <section>
-      <ul class="flex flex-wrap gap-x-3 justify-center">
+      <ul class="flex flex-wrap justify-center gap-x-3">
         <li>
           <p class="font-medium">Recursos:</p>
         </li>
@@ -94,7 +94,7 @@ const resources: Link[] = [
             <li>
               <a
                 href={link.path}
-                class="font-bold hover:text-neutral-700 dark:hover:text-neutral-400 transition-all"
+                class="font-bold transition-all hover:text-neutral-700 dark:hover:text-neutral-400"
                 target="_blank"
               >
                 {link.label}
@@ -116,7 +116,7 @@ const resources: Link[] = [
     width: 25px;
     height: 25px;
     border-radius: 100%;
-    @apply bg-neutral-600 dark:bg-neutral-900 border border-neutral-600 relative;
+    @apply relative border border-neutral-600 bg-neutral-600 dark:bg-neutral-900;
     &::before {
       content: "";
       height: 4px;
