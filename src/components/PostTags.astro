@@ -1,5 +1,4 @@
 ---
-import LinkButton from "./LinkButton.astro";
 interface Props {
   tags: string[];
 }
@@ -10,9 +9,12 @@ const { tags } = Astro.props;
 <section class="flex gap-2">
   {
     tags.map((tag) => (
-      <LinkButton href={`/tag/${tag}`} class="p-0">
+      <a
+        href={`/tag/${tag}`}
+        class="rounded-md border border-neutral-400 px-2 text-sm font-medium text-neutral-500 transition-all hover:scale-105 hover:border-cyan-500 dark:border-neutral-500 dark:text-neutral-400 dark:hover:border-cyan-500"
+      >
         #{tag}
-      </LinkButton>
+      </a>
     ))
   }
 </section>
