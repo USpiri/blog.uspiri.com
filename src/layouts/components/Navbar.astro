@@ -30,7 +30,11 @@ const nav: LinkType[] = [
         <DevlyIcon class="h-4" />
         <span class="font-semibold">Uriel Spiridione</span>
       </a>
-      <Button id="menu" aria-label="Menu button" class="block md:hidden">
+      <Button
+        id="menu"
+        aria-label="Menu button"
+        class="block fill-neutral-400 hover:fill-cyan-500 md:hidden"
+      >
         <MenuIcon class="h-5" />
       </Button>
     </section>
@@ -63,7 +67,10 @@ const nav: LinkType[] = [
           }
         </ul>
         <div class="flex items-center justify-around gap-2">
-          <Link href="/" class="p-1 md:hidden">
+          <Link
+            href="/"
+            class="fill-neutral-400 p-1 hover:fill-cyan-500 md:hidden"
+          >
             <HomeIcon class="h-6 md:h-5" />
           </Link>
           <SearchButton />
@@ -90,5 +97,8 @@ const nav: LinkType[] = [
   }
   .height-transition {
     max-height: 400px;
+  }
+  .navbar-open {
+    @apply border-b;
   }
 </style>
