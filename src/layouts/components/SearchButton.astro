@@ -5,14 +5,19 @@ import SearchIcon from "@components/icons/SearchIcon.astro";
 import Search from "./Search.astro";
 ---
 
-<Button open-dialog dialog-id="search" aria-label="Search articles">
-  <SearchIcon class="h-6 fill-neutral-400 md:h-5" />
+<Button
+  open-dialog
+  dialog-id="search"
+  aria-label="Search articles"
+  class="fill-neutral-400 hover:fill-cyan-500"
+>
+  <SearchIcon class="h-6 md:h-5" />
 </Button>
 <Dialog id="search" class="md:w-full md:max-w-lg">
-  <div class="px-2 pt-3 text-neutral-500 dark:text-neutral-200">
+  <div class="px-2 pt-3">
     <Search />
   </div>
   <footer class="flex flex-row-reverse gap-2 p-1">
-    <Button dialog-close class="p-2" custom-id="1234">Cancel</Button>
+    <Button dialog-close class="px-2">Cancel</Button>
   </footer>
 </Dialog>
