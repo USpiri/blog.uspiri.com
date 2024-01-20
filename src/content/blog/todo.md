@@ -11,28 +11,27 @@ published: false
 
 ## Tareas activas recientemente
 
-- ⬜ Reestilar AboutHeader
-- ⬜ Reestilar PostCard
-- ⬜ Reestilar Title
-- ⬜ Reestilar Subtitle
-- ⬜ Reestilar TagLink
-- ✅ Reestilar ShareLinks
-- ✅ Reestilar PostTags
-- ✅ Reestilar Daily
-- ⬜ Reestilar Aside
-- ⬜ Reestilar Tabs y TabItem
-- ✅ Reestilar Markdown
-- ✅ Reestilar MarkdownHeader
-- ⬜ Reestilar Pagination
 - ⬜ Reestilar NavigationCard
-- ⬜ Reestilar FileTree
-- ⬜ Reemplazar LinkButton por Link
-- ❌ Soporte para i18n.
 
 ## Tareas cerradas
 
 ### Completadas
 
+- ✅ Reestilar AboutHeader
+- ✅ Reestilar PostCard
+- ✅ Reestilar Title
+- ✅ Reestilar Subtitle
+- ✅ Reestilar TagLink
+- ✅ Reestilar ShareLinks
+- ✅ Reestilar PostTags
+- ✅ Reestilar Daily
+- ✅ Reestilar Aside
+- ✅ Reestilar Tabs y TabItem
+- ✅ Reestilar Markdown
+- ✅ Reestilar MarkdownHeader
+- ✅ Reestilar Pagination
+- ✅ Reestilar FileTree
+- ✅ Reemplazar LinkButton por Link
 - ✅ Bug: cuadro negro en About en modo claro.
 - ✅ Bug: enlace de compartir.
 - ✅ Actualizar Astro 4.0.
@@ -115,3 +114,4 @@ published: false
 - ❌ Cambiar fuente a Geist solo para el contenido general, los codeblocks seguirán con la actual.
 - ❌ Analizar implementación de embeddeds como twitter (𝕏).
 - ❌ Fix: componentes DocsFile, DocsSideBar, `/docs` ruta, `/docs/[slug]` ruta, Docs Layout
+- ❌ Soporte para i18n.
