@@ -33,7 +33,7 @@ const nav: LinkType[] = [
       <Button
         id="menu"
         aria-label="Menu button"
-        class="block fill-neutral-400 hover:fill-cyan-500 md:hidden"
+        class="block fill-neutral-500 hover:fill-cyan-500 md:hidden"
       >
         <MenuIcon class="h-5" />
       </Button>
@@ -69,7 +69,7 @@ const nav: LinkType[] = [
         <div class="flex items-center justify-around gap-2">
           <Link
             href="/"
-            class="fill-neutral-400 p-1 hover:fill-cyan-500 md:hidden"
+            class="fill-neutral-500 p-1 hover:fill-cyan-500 md:hidden"
           >
             <HomeIcon class="h-6 md:h-5" />
           </Link>
@@ -96,9 +96,7 @@ const nav: LinkType[] = [
     transition: max-height 0.3s linear;
   }
   .height-transition {
-    max-height: 400px;
-  }
-  .navbar-open {
-    @apply border-b;
+    max-height: 250px;
+    @apply border-b border-neutral-500/20 md:border-none;
   }
 </style>
