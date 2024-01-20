@@ -12,44 +12,30 @@ const { post } = Astro.props;
 
 <a
   href={`/blog/${post.slug}`}
-  class="pt-3 pb-4 px-4 flex gap-3 rounded-lg hover:scale-[102%] transition-all hover:bg-neutral-300 dark:hover:bg-neutral-950 dark:hover:bg-opacity-40 hover:bg-opacity-30 h-fit"
-  transition:name={`post-${post.id}`}
+  class="flex flex-col gap-2 rounded-lg border border-neutral-300 px-5 py-4 transition-all hover:scale-[102%] hover:border-cyan-400 dark:border-neutral-800 dark:hover:border-cyan-600"
 >
-  {
-    post.data.image && (
-      <Image
-        src={post.data.image.src}
-        alt={post.data.image.alt}
-        width="132"
-        height="132"
-        class="self-start rounded-lg"
-      />
-    )
-  }
-  <article>
-    <header>
-      <span
-        class="text-neutral-500 dark:text-neutral-400/80 dark:font-bold font-semibold text-sm"
-        ><FormattedDate date={post.data.date} /></span
-      >
-      <h3 class="text-xl md:text-2xl font-semibold line-clamp-1 mb-1">
-        {post.data.title}
-      </h3>
-    </header>
-    <p
-      class="text-neutral-500 mt-1.5 dark:text-neutral-400/80 font-medium line-clamp-2 text-sm md:text-base"
+  <header>
+    <span
+      class="text-sm font-semibold text-neutral-500 dark:font-bold dark:text-neutral-400/80"
     >
-      {post.data.description}
-    </p>
-    <footer class="flex flex-row gap-2 items-center mt-1.5">
+      <FormattedDate date={post.data.date} />
+    </span>
+    <h3 class="text-nowrap text-xl font-semibold transition-all md:text-2xl">
+      {post.data.title}
+    </h3>
+  </header>
+  <p class="leading-snug text-neutral-500 dark:text-neutral-400">
+    {post.data.description}
+  </p>
+  <footer>
+    <ul class="flex gap-3">
       {
-        post.data.tags &&
-          post.data.tags.map((tag: string) => (
-            <div class="font-semibold text-neutral-600 dark:text-neutral-300 text-sm md:text-base">
-              #{tag}
-            </div>
-          ))
+        post.data.tags?.map((tag) => (
+          <li class="rounded-md border border-neutral-400 px-2 text-sm text-neutral-500 dark:border-neutral-600 dark:text-neutral-400">
+            #{tag}
+          </li>
+        ))
       }
-    </footer>
-  </article>
+    </ul>
+  </footer>
 </a>

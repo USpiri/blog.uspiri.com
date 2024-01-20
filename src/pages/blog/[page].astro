@@ -24,43 +24,40 @@ const { page } = Astro.props;
   title="Blog | Uriel Spiridione"
   description="Sigue en mi blog personal para aprender temas de programación, tips, econoía, etc. No te lo pierdas!"
 >
-  <main class="flex items-center flex-col">
-    <section class="max-w-3xl w-full">
-      <Title>Blog</Title>
-      <ul class="mt-8 px-2 md:px-0">
-        {
-          page.data.map((post, i) => (
-            <li>
-              {i !== 0 && <PostDivider />}
-              <PostCard post={post} />
-            </li>
-          ))
-        }
-      </ul>
+  <main class="mx-4 w-full max-w-3xl md:mx-8">
+    <h1 class="text-3xl font-semibold md:text-4xl">Blog</h1>
+    <ul class="mt-10 flex flex-col gap-3">
       {
-        page.total > page.size && (
-          <div class="flex justify-center mt-8 md:mt-12">
-            <Pagination
-              firstPage={page.currentPage !== 1 ? "/blog" : null}
-              previousPage={
-                page.url.prev
-                  ? page.url.prev === "1"
-                    ? '"/blog"'
-                    : page.url.prev
-                  : null
-              }
-              nextPage={page.url.next ? page.url.next : null}
-              lastPage={
-                page.currentPage !== page.lastPage
-                  ? `/blog/${page.lastPage}`
-                  : null
-              }
-              currentPage={page.currentPage}
-              totalPages={page.lastPage}
-            />
-          </div>
-        )
+        page.data.map((post) => (
+          <li>
+            <PostCard post={post} />
+          </li>
+        ))
       }
-    </section>
+    </ul>
+    {
+      page.total > page.size && (
+        <div class="mt-8 flex justify-center md:mt-12">
+          <Pagination
+            firstPage={page.currentPage !== 1 ? "/blog" : null}
+            previousPage={
+              page.url.prev
+                ? page.url.prev === "1"
+                  ? '"/blog"'
+                  : page.url.prev
+                : null
+            }
+            nextPage={page.url.next ? page.url.next : null}
+            lastPage={
+              page.currentPage !== page.lastPage
+                ? `/blog/${page.lastPage}`
+                : null
+            }
+            currentPage={page.currentPage}
+            totalPages={page.lastPage}
+          />
+        </div>
+      )
+    }
   </main>
 </Layout>

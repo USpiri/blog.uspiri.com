@@ -3,66 +3,55 @@ import { Image } from "astro:assets";
 import GithubIcon from "./icons/GithubIcon.astro";
 import LinkedinIcon from "./icons/LinkedinIcon.astro";
 import XTwitterIcon from "./icons/XTwitterIcon.astro";
+import NewLinkButton from "./NewLinkButton.astro";
+
+const links = [
+  {
+    href: "https://www.linkedin.com/in/urielspiridione/",
+    title: "Linkedin page",
+    icon: LinkedinIcon,
+  },
+  {
+    href: "https://x.com/UrielSpiridione/",
+    title: "X/Twitter page",
+    icon: XTwitterIcon,
+  },
+  {
+    href: "https://github.com/USpiri/",
+    title: "Github profile",
+    icon: GithubIcon,
+  },
+];
 ---
 
-<header
-  class="flex flex-col-reverse md:flex-row justify-around px-5 gap-8"
+<section
+  class="flex flex-col justify-between gap-5"
   transition:name="about-header"
 >
-  <div>
-    <h1 class="text-4xl font-bold">Uriel Spiridione</h1>
-    <h2 class="font-semibold text-neutral-500 dark:text-neutral-400 mt-3">
-      Full stack web developer
-    </h2>
-    <div class="max-w-md">
-      <p>
-        Desarrollador Full-Stack especializado en Angular con entusiasmo por el
-        aprendizaje y la creación de experiencias web únicas y funcionales.
-      </p>
-      <p class="mt-2">Blog personal</p>
+  <Image
+    src="/profile-min.jpg"
+    alt="Uriel Spiridione profile"
+    width="150"
+    height="150"
+    class="rounded-full border-4 border-cyan-500"
+  />
+  <div class="flex flex-col gap-2">
+    <div>
+      <span
+        class="text-sm font-semibold text-neutral-500 dark:text-neutral-400 md:text-base"
+        >Full stack web developer</span
+      >
+      <h1 class="text-5xl font-semibold md:text-6xl">Uriel Spiridione</h1>
     </div>
-    <div class="flex gap-4 items-center mt-3">
-      <a
-        href="https://github.com/USpiri/"
-        target="_blank"
-        title="Github repository"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-      >
-        <GithubIcon
-          class="h-6 fill-neutral-500 hover:fill-neutral-600 dark:hover:fill-neutral-400"
-        />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/urielspiridione/"
-        target="_blank"
-        title="linkedin profile"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-      >
-        <LinkedinIcon
-          class="h-6 fill-neutral-500 hover:fill-neutral-600 dark:hover:fill-neutral-400"
-        />
-      </a>
-      <a
-        href="https://twitter.com/UrielSpiridione"
-        target="_blank"
-        title="Twitter profile"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-      >
-        <XTwitterIcon
-          class="h-6 fill-neutral-500 hover:fill-neutral-600 dark:hover:fill-neutral-400"
-        />
-      </a>
-    </div>
+    <h2 class="text-lg font-medium text-cyan-500 md:text-xl">Blog personal</h2>
   </div>
-  <div class="flex justify-center md:block mb-4 sm:mb-8 md:mb-0">
-    <div class="w-44 sm:w-auto">
-      <Image
-        src="/profile-min.jpg"
-        alt="Uriel Spiridione profile"
-        width="200"
-        height="200"
-        class="rounded-lg"
-      />
-    </div>
+  <div class="flex gap-3">
+    {
+      links.map((link) => (
+        <NewLinkButton title={link.title} href={link.href}>
+          <link.icon class="h-5 fill-neutral-500 dark:fill-neutral-200" />
+        </NewLinkButton>
+      ))
+    }
   </div>
-</header>
+</section>

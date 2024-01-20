@@ -1,5 +1,5 @@
 ---
-import LinkButton from "./LinkButton.astro";
+import NewLinkButton from "./NewLinkButton.astro";
 import ShareButton from "./ShareButton.astro";
 import LinkedinIcon from "./icons/LinkedinIcon.astro";
 import WhatsappIcon from "./icons/WhatsappIcon.astro";
@@ -27,15 +27,9 @@ const links = [
 
 {
   links.map((link) => (
-    <LinkButton
-      href={link.href}
-      target="_blank"
-      class="fill-neutral-500 p-1 hover:fill-cyan-500"
-      title={link.title}
-      rel="noopener noreferrer"
-    >
-      <link.icon class="h-5" />
-    </LinkButton>
+    <NewLinkButton title={link.title} href={link.href}>
+      <link.icon class="h-5 fill-neutral-500 dark:fill-neutral-200" />
+    </NewLinkButton>
   ))
 }
 <ShareButton />

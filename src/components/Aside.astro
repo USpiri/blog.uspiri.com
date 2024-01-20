@@ -28,7 +28,7 @@ const { type = "note", title } = Astro.props;
       </span>
       {title}
     </header>
-    <section class="px-2 prose-headings:my-1 prose-p:m-0">
+    <section class="px-2 prose-headings:my-1 first:prose-p:my-2">
       <slot />
     </section>
   </div>
@@ -40,7 +40,7 @@ const { type = "note", title } = Astro.props;
       @apply bg-blue-400/10 dark:bg-blue-500/10;
     }
     .content {
-      @apply dark:fill-blue-400 fill-blue-600 text-blue-600 dark:text-blue-400;
+      @apply fill-blue-600 text-blue-600 dark:fill-blue-400 dark:text-blue-400;
     }
     .bord {
       @apply border-blue-600 dark:border-blue-500;
@@ -51,7 +51,7 @@ const { type = "note", title } = Astro.props;
       @apply bg-sky-400/10 dark:bg-sky-500/10;
     }
     .content {
-      @apply dark:fill-sky-400 fill-sky-600 text-sky-600 dark:text-sky-400;
+      @apply fill-sky-600 text-sky-600 dark:fill-sky-400 dark:text-sky-400;
     }
     .bord {
       @apply border-sky-600 dark:border-sky-500;
@@ -62,7 +62,7 @@ const { type = "note", title } = Astro.props;
       @apply bg-amber-400/10 dark:bg-amber-500/10;
     }
     .content {
-      @apply dark:fill-amber-400 fill-amber-600 text-amber-600 dark:text-amber-400;
+      @apply fill-amber-600 text-amber-600 dark:fill-amber-400 dark:text-amber-400;
     }
     .bord {
       @apply border-amber-600 dark:border-amber-500;
@@ -73,7 +73,7 @@ const { type = "note", title } = Astro.props;
       @apply bg-red-400/10 dark:bg-red-500/10;
     }
     .content {
-      @apply dark:fill-red-400 fill-red-600 text-red-600 dark:text-red-400;
+      @apply fill-red-600 text-red-600 dark:fill-red-400 dark:text-red-400;
     }
     .bord {
       @apply border-red-600 dark:border-red-500;
@@ -84,7 +84,7 @@ const { type = "note", title } = Astro.props;
       @apply bg-emerald-400/10 dark:bg-emerald-500/10;
     }
     .content {
-      @apply dark:fill-emerald-400 fill-emerald-600 text-emerald-600 dark:text-emerald-400;
+      @apply fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400;
     }
     .bord {
       @apply border-emerald-600 dark:border-emerald-500;

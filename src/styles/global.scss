@@ -2,7 +2,7 @@
   --color: theme(colors.neutral.700);
 }
 ::-webkit-scrollbar {
-  @apply w-1 h-1 border border-red-400;
+  @apply h-1 w-1 border;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px transparent;
@@ -17,7 +17,4 @@
 }
 html {
   scroll-behavior: smooth;
-}
-main {
-  @apply my-28;
 }

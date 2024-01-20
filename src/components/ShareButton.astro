@@ -1,14 +1,13 @@
 ---
-import Button from "./Button.astro";
 import ShareIcon from "./icons/ShareIcon.astro";
 ---
 
-<Button
-  class="flex items-center fill-neutral-500 p-1 hover:fill-cyan-500"
+<button
+  class="flex items-center rounded-lg border border-neutral-400 p-2 transition-all hover:scale-110 dark:border-neutral-500"
   id="share"
 >
-  <ShareIcon class="h-5 w-5" />
-</Button>
+  <ShareIcon class="h-5 w-5 fill-neutral-600 dark:fill-neutral-200" />
+</button>
 
 <script>
   function share() {

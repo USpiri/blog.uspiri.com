@@ -17,9 +17,9 @@ export const getStaticPaths = (async () => {
   return collections.map((collection) => {
     const filteredPosts = sortPosts(
       posts.filter(
-        (post) => slug(post.data.collection ?? "") === slug(collection ?? "")
+        (post) => slug(post.data.collection ?? "") === slug(collection ?? ""),
       ),
-      { filterNonPublished: false, sortDirection: "ASC" }
+      { filterNonPublished: false, sortDirection: "ASC" },
     );
     return {
       params: {
@@ -42,24 +42,22 @@ const { collection, posts } = Astro.props;
   title={`${collection} | Uriel Spiridione`}
   description={`Posteos de ${collection}`}
 >
-  <main class="flex items-center flex-col">
-    <section class="max-w-3xl w-full">
-      <Title>
-        <CollectionIcon class="h-8 mt-1" slot="icon" />
-        {collection}
-      </Title>
-      <ul class="flex flex-col gap-3 px-5 mt-8">
-        {
-          posts.map((post) => (
-            <li>
-              <NavigationCard
-                label={post.data.title}
-                href={`/collections/${slug(collection)}/${post.slug}`}
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+  <main class="mx-4 w-full max-w-3xl md:mx-8">
+    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+      <CollectionIcon class="h-9" />
+      <h1>{collection}</h1>
+    </div>
+    <ul class="mt-10 flex flex-col gap-3">
+      {
+        posts.map((post) => (
+          <li>
+            <NavigationCard
+              label={post.data.title}
+              href={`/collections/${slug(collection)}/${post.slug}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>

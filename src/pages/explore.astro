@@ -17,13 +17,14 @@ const tags = [
   title="Explorar | Uriel Spiridione"
   description="Explorar las listas de tags y categorías del blog."
 >
-  <main class="flex items-center flex-col">
-    <section class="max-w-3xl w-full">
-      <Title>
-        <TagIcon class="h-8 mt-1" slot="icon" />
-         Tags
-      </Title>
-      <ul class="mt-8 mb-24 flex gap-3 items-center justify-center flex-wrap">
+  <main class="mx-4 flex w-full max-w-3xl flex-col gap-20 md:mx-8">
+    <h1 class="text-5xl font-semibold">Tags y categorías</h1>
+    <section>
+      <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+        <TagIcon class="h-9" />
+        <h2>Tags</h2>
+      </div>
+      <ul class="mt-8 flex flex-wrap items-center justify-center gap-3">
         {
           tags.map((tag) => (
             <li>
@@ -33,9 +34,45 @@ const tags = [
         }
       </ul>
     </section>
-    <Subtitle>Categorías</Subtitle>
-    <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
-      Próximamente...
-    </p>
+    <section>
+      <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+        <TagIcon class="h-9" />
+        <h2>Categorías</h2>
+      </div>
+      <p class="mt-8 text-neutral-600 dark:text-neutral-400">Próximamente...</p>
+    </section>
   </main>
 </Layout>
+
+<!-- <main class="mx-8 flex w-full max-w-3xl flex-col gap-20">
+  <AboutHeader />
+  <section>
+    <h2 class="text-4xl font-semibold">Posteos más recientes</h2>
+
+    <ul class="mt-10 flex flex-col gap-3">
+      {
+        posts.map((post) => (
+          <li>
+            <PostCard post={post} />
+          </li>
+        ))
+      }
+    </ul>
+    <div class="m-3 flex justify-end md:mx-0">
+      <LinkButton href="/blog" class="px-2 pt-1 underline"
+        >Ver más...</LinkButton
+      >
+    </div>
+  </section>
+  <section>
+    <Aside title="Nota:" type="caution">
+      <div class="flex flex-col gap-3">
+        <p>
+          Este sitio se encuentra en desarrollo, puedes ver una lista de
+          progreso en el siguiente enlace:
+        </p>
+        <NavigationCard label="Lista de tareas" href="/todo" />
+      </div>
+    </Aside>
+  </section>
+</main> -->

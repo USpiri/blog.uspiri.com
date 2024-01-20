@@ -1,10 +1,26 @@
 ---
+import NewLinkButton from "@components/NewLinkButton.astro";
 import GithubIcon from "@components/icons/GithubIcon.astro";
 import LinkedinIcon from "@components/icons/LinkedinIcon.astro";
 import RssIcon from "@components/icons/RssIcon.astro";
 import XTwitterIcon from "@components/icons/XTwitterIcon.astro";
 import type { Link } from "@utils/models/links.interface";
 const year = new Date().getFullYear();
+
+const media = [
+  { title: "Rss", href: "/rss.xml", icon: RssIcon },
+  { title: "Github", href: "https://github.com/USpiri/", icon: GithubIcon },
+  {
+    title: "Linkedin",
+    href: "https://www.linkedin.com/in/urielspiridione/",
+    icon: LinkedinIcon,
+  },
+  {
+    title: "X Twitter",
+    href: "https://twitter.com/UrielSpiridione",
+    icon: XTwitterIcon,
+  },
+];
 
 const web: Link[] = [
   { label: "Home", path: "/" },
@@ -19,7 +35,7 @@ const web: Link[] = [
 
 const resources: Link[] = [
   { label: "Rss", path: "/rss.xml" },
-  { label: "Source code", path: "https://github.com/USpiri/uspiri.github.io" },
+  { label: "Source code", path: "https://github.com/USpiri/blog.uspiri.com" },
 ];
 ---
 
@@ -32,50 +48,25 @@ const resources: Link[] = [
       <a href="/" class="text-lg font-semibold">Uriel Spiridione | USpiri</a>
     </section>
     <section class="flex items-center gap-4">
-      <a
-        href="/rss.xml"
-        target="_blank"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-        title="Rss"
-      >
-        <RssIcon class="h-5" />
-      </a>
-      <a
-        href="https://github.com/USpiri/"
-        target="_blank"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-        title="Github"
-      >
-        <GithubIcon class="h-5" />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/urielspiridione/"
-        target="_blank"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-        title="Linkedin"
-      >
-        <LinkedinIcon class="h-5" />
-      </a>
-      <a
-        href="https://twitter.com/UrielSpiridione"
-        target="_blank"
-        class="rounded-lg transition-all hover:scale-110 active:scale-90"
-        title="X Twitter"
-      >
-        <XTwitterIcon class="h-5" />
-      </a>
+      {
+        media.map((item) => (
+          <NewLinkButton href={item.href} title={item.title}>
+            <item.icon class="h-4 fill-neutral-500 dark:fill-neutral-200" />
+          </NewLinkButton>
+        ))
+      }
     </section>
   </div>
   <div class="flex flex-col items-center gap-2">
     <section>
       <ul class="flex flex-wrap justify-center gap-x-3">
-        <li><p class="font-medium">Web:</p></li>
+        <li>Web:</li>
         {
           web.map((link) => (
             <li>
               <a
                 href={link.path}
-                class="font-bold transition-all hover:text-neutral-700 dark:hover:text-neutral-400"
+                class="font-bold transition-all hover:text-cyan-500 dark:hover:text-cyan-400"
               >
                 {link.label}
               </a>
@@ -87,15 +78,16 @@ const resources: Link[] = [
     <section>
       <ul class="flex flex-wrap justify-center gap-x-3">
         <li>
-          <p class="font-medium">Recursos:</p>
+          <p>Recursos:</p>
         </li>
         {
           resources.map((link) => (
             <li>
               <a
                 href={link.path}
-                class="font-bold transition-all hover:text-neutral-700 dark:hover:text-neutral-400"
+                class="font-bold transition-all hover:text-cyan-500 dark:hover:text-cyan-400"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {link.label}
               </a>
@@ -116,7 +108,7 @@ const resources: Link[] = [
     width: 25px;
     height: 25px;
     border-radius: 100%;
-    @apply relative border border-neutral-600 bg-neutral-600 dark:bg-neutral-900;
+    @apply relative border border-neutral-400 bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-950;
     &::before {
       content: "";
       height: 4px;

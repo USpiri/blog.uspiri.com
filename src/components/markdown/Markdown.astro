@@ -24,11 +24,7 @@ const {
 } = Astro.props;
 ---
 
-<section
-  data-pagefind-body={pageFind}
-  class="w-full max-w-3xl"
-  transition:name={`post-${id}`}
->
+<section data-pagefind-body={pageFind} transition:name={`post-${id}`}>
   <header class="px-3">
     {
       !hideHeader && (
@@ -41,8 +37,8 @@ const {
             hideLinks={hideLinks}
           />
           <hr
-            class={`mb-5 mt-3 border-neutral-400 dark:border-neutral-500 ${
-              description === undefined ? "mt-6" : ""
+            class={`mb-5 mt-3 rounded-full border border-cyan-400 dark:border-cyan-500 ${
+              description === undefined && "mt-6"
             }`}
           />
         </>

@@ -16,33 +16,31 @@ const langs = [
   title="Snippets | Uriel Spiridione"
   description="Fragmentos de código de distintos lenguajes de programación o extensiones de los posteos del blog"
 >
-  <main class="flex items-center flex-col">
-    <section class="max-w-3xl w-full">
-      <Title>
-        <CodeblockIcon class="h-8 mt-1" slot="icon" />
-         Code snippets
-      </Title>
-      <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
-        Fragmentos de código de distintos lenguajes de programación utilizados
-        para ilustrar o proporcionar ejemplos sobre un código en particular.
-        Agrupados por lenguaje de programación.
-      </p>
-      <p class="mt-4 px-5 text-neutral-600 dark:text-neutral-400">
-        También sirven como extensiones de los articulos publicados en el
-        <a href="/blog" class="underline font-semibold">Blog</a>
-      </p>
-      <ul class="flex flex-wrap gap-3 px-5 mt-8">
-        {
-          langs.map((lang) => (
-            <li class="flex-[1_0_40%]">
-              <NavigationCard
-                label={capitalize(lang)}
-                href={`/snippet/${lang}`}
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+  <main class="mx-4 w-full max-w-3xl md:mx-8">
+    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+      <CodeblockIcon class="h-9" />
+      <h1>Code snippets</h1>
+    </div>
+    <p class="mt-8 text-neutral-600 dark:text-neutral-400">
+      Fragmentos de código de distintos lenguajes de programación utilizados
+      para ilustrar o proporcionar ejemplos sobre un código en particular.
+      Agrupados por lenguaje de programación.
+    </p>
+    <p class="mt-4 text-neutral-600 dark:text-neutral-400">
+      También sirven como extensiones de los articulos publicados en el
+      <a href="/blog" class="font-semibold underline">Blog</a>
+    </p>
+    <ul class="mt-10 flex flex-wrap gap-3">
+      {
+        langs.map((lang) => (
+          <li class="flex-[1_0_40%]">
+            <NavigationCard
+              label={capitalize(lang)}
+              href={`/snippet/${lang}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>

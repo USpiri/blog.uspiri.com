@@ -16,24 +16,22 @@ const collections = [
   title="Colecciones de contenido | Uriel Spiridione"
   description="Posts agupados en colecciones"
 >
-  <main class="flex items-center flex-col">
-    <section class="max-w-3xl w-full">
-      <Title>
-        <CollectionIcon class="h-8 mt-1" slot="icon" />
-         Colecciones
-      </Title>
-      <ul class="flex flex-col gap-3 px-5 mt-8">
-        {
-          collections.map((collection) => (
-            <li>
-              <NavigationCard
-                label={capitalize(collection ?? "")}
-                href={`/collections/${slug(collection ?? "")}`}
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+  <main class="mx-4 w-full max-w-3xl md:mx-8">
+    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+      <CollectionIcon class="h-9" />
+      <h>Colecciones</h>
+    </div>
+    <ul class="mt-10 flex flex-col gap-3">
+      {
+        collections.map((collection) => (
+          <li>
+            <NavigationCard
+              label={capitalize(collection ?? "")}
+              href={`/collections/${slug(collection ?? "")}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>

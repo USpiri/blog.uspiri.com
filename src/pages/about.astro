@@ -9,55 +9,53 @@ import PostDivider from "@components/PostDivider.astro";
   title="Uriel Spiridione | Blog Personal"
   description="Desarrollador Full-Stack especializado en Angular con entusiasmo por el aprendizaje y la creación de experiencias web únicas y funcionales."
 >
-  <div class="flex items-center flex-col">
-    <main class="max-w-3xl w-full">
-      <section class="mb-16 md:mb-14">
-        <AboutHeader />
-      </section>
-      <PostDivider />
-      <section
-        class="mb-10 md:mb-12 mt-8 md:mt-10 dark:bg-neutral-800 sm:rounded-lg py-4"
-      >
-        <Subtitle>Sobre mí</Subtitle>
-        <article class="flex gap-3 flex-col mt-10 px-4">
-          <p>
-            Soy desarrollador web profesional, fotógrafo y estudiante de
-            ciencias económicas. Actualmente trabajo como líder en un equipo de
-            desarrollo Angular. Me considero organizado y creativo, disfruto
-            aprender, hacer experimentos y compartir lo aprendido.
-          </p>
-          <p>
-            Fuera del trabajo, mi hobby es la fotografía. Trabaje como fotógrafo
-            en importantes eventos y también con modelos, pero actualmente
-            disfruto más de viajes, fotografía casual y de naturaleza.
-          </p>
-        </article>
-      </section>
-      <PostDivider />
-      <section class="mt-8 md:mt-10">
-        <Subtitle>Blog personal</Subtitle>
-        <article class="flex gap-3 flex-col mt-10 px-4">
-          <p>
-            Este proyecto surge del aprendizaje de nuevas tecnologías como Astro
-            y Tailwind, con el fin de poder tener una plataforma en la que poder
-            compartir contenido técnico, investigaciones, experimentos o
-            experiencias.
-          </p>
-          <p>
-            Algunas características especiales son los <a
-              href="/collections/blog/advanced-markdown"
-              class="underline">componentes personalizados</a
-            > que permiten tener un mejor control del contenido, los <a
-              href="/daily"
-              class="underline">Daily</a
-            > que son pequeñas notas, no tan reelevantes o robustas como para
-            ser un posteo, los <a href="/snippet" class="underline">snippets</a>
-            que anexan o extienden la información los artículos publicados y por
-            último las <a href="/collections" class="underline">Collections</a>,
-            estas son grupos de distintos artículos que forman un tema.
-          </p>
-        </article>
-      </section>
-    </main>
-  </div>
+  <main class="mx-4 w-full max-w-3xl md:mx-8">
+    <section class="mb-16 md:mb-14">
+      <AboutHeader />
+    </section>
+    <PostDivider />
+    <section
+      class="mb-10 mt-8 py-4 dark:bg-neutral-900 sm:rounded-lg md:mb-12 md:mt-10"
+    >
+      <Subtitle>Sobre mí</Subtitle>
+      <article class="mt-10 flex flex-col gap-3 px-4">
+        <p>
+          Soy desarrollador web profesional, fotógrafo y estudiante de ciencias
+          económicas. Actualmente trabajo como líder en un equipo de desarrollo
+          Angular. Me considero organizado y creativo, disfruto aprender, hacer
+          experimentos y compartir lo aprendido.
+        </p>
+        <p>
+          Fuera del trabajo, mi hobby es la fotografía. Trabaje como fotógrafo
+          en importantes eventos y también con modelos, pero actualmente
+          disfruto más de viajes, fotografía casual y de naturaleza.
+        </p>
+      </article>
+    </section>
+    <PostDivider />
+    <section class="mt-8 md:mt-10">
+      <Subtitle>Blog personal</Subtitle>
+      <article class="mt-10 flex flex-col gap-3 px-4">
+        <p>
+          Este proyecto surge del aprendizaje de nuevas tecnologías como Astro y
+          Tailwind, con el fin de poder tener una plataforma en la que poder
+          compartir contenido técnico, investigaciones, experimentos o
+          experiencias.
+        </p>
+        <p>
+          Algunas características especiales son los <a
+            href="/collections/blog/advanced-markdown"
+            class="underline">componentes personalizados</a
+          > que permiten tener un mejor control del contenido, los <a
+            href="/daily"
+            class="underline">Daily</a
+          > que son pequeñas notas, no tan reelevantes o robustas como para ser un
+          posteo, los <a href="/snippet" class="underline">snippets</a>
+          que anexan o extienden la información los artículos publicados y por último
+          las <a href="/collections" class="underline">Collections</a>, estas
+          son grupos de distintos artículos que forman un tema.
+        </p>
+      </article>
+    </section>
+  </main>
 </Layout>

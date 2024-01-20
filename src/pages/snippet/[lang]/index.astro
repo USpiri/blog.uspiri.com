@@ -1,6 +1,5 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
-import Subtitle from "@components/Subtitle.astro";
 import Title from "@components/Title.astro";
 import CodeblockIcon from "@components/icons/CodeblockIcon.astro";
 import Layout from "@layouts/Layout.astro";
@@ -13,7 +12,7 @@ export const getStaticPaths = (async () => {
   const langs = [...new Set(snippets.map((snippet) => snippet.data.lang))];
   return langs.map((lang) => {
     const filteredSnippets = snippets.filter(
-      (snippet) => snippet.data.lang === lang
+      (snippet) => snippet.data.lang === lang,
     );
     return {
       params: {
@@ -36,28 +35,26 @@ const { lang } = Astro.params;
   title={`${capitalize(lang)} snippets | Uriel Spiridione`}
   description={`Fragmentos de código de ${lang}.`}
 >
-  <main class="flex items-center flex-col">
-    <section class="max-w-3xl w-full">
-      <Title>
-        <CodeblockIcon class="h-8 mt-1" slot="icon" />
-        {`${capitalize(lang)} code snippets`}
-      </Title>
-      <p class="mt-8 px-5 text-neutral-600 dark:text-neutral-400">
-        Fragmentos de código de {lang} utilizados para ilustrar o proporcionar
-        ejemplos sobre un código en particular.
-      </p>
-      <ul class="flex flex-col gap-3 px-5 mt-8">
-        {
-          snippets.map((snippet) => (
-            <li>
-              <NavigationCard
-                label={snippet.data.title}
-                href={`/snippet/${lang}/${snippet.slug}`}
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+  <main class="mx-4 w-full max-w-3xl md:mx-8">
+    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+      <CodeblockIcon class="h-9" />
+      <h1>{`${capitalize(lang)} code snippets`}</h1>
+    </div>
+    <p class="mt-8 text-neutral-600 dark:text-neutral-400">
+      Fragmentos de código de {lang} utilizados para ilustrar o proporcionar ejemplos
+      sobre un código en particular.
+    </p>
+    <ul class="mt-10 flex flex-col gap-3">
+      {
+        snippets.map((snippet) => (
+          <li>
+            <NavigationCard
+              label={snippet.data.title}
+              href={`/snippet/${lang}/${snippet.slug}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>
