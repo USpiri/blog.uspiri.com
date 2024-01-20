@@ -1,7 +1,7 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import rehypePrettyCode from 'rehype-pretty-code';
+import rehypePrettyCode from "rehype-pretty-code";
 
 import mdx from "@astrojs/mdx";
 
@@ -9,18 +9,20 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://USpiri.github.io',
-  base: '/',
+  site: "https://blog.uspiri.com",
+  base: "/",
   integrations: [tailwind(), sitemap(), mdx()],
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [
-      [rehypePrettyCode,
+      [
+        rehypePrettyCode,
         {
-          theme: 'dark-plus',
+          theme: "dark-plus",
           keepBackground: false,
-        }
+        },
       ],
-    ]
-  }
+    ],
+  },
 });
+
