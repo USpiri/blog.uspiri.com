@@ -4,7 +4,11 @@ import MoonIcon from "@components/icons/MoonIcon.astro";
 import SunIcon from "@components/icons/SunIcon.astro";
 ---
 
-<Button id="toggle-dark-mode" aria-label="Dark mode button">
+<Button
+  id="toggle-dark-mode"
+  title="Theme toggle"
+  class="fill-neutral-400 hover:fill-cyan-500"
+>
   <SunIcon class="h-6 md:h-5" />
   <MoonIcon class="hide-icon h-6 md:h-5" />
 </Button>
