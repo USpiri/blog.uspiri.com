@@ -16,13 +16,13 @@ published: false
 - ⬜ Reestilar Title
 - ⬜ Reestilar Subtitle
 - ⬜ Reestilar TagLink
-- ⬜ Reestilar ShareLinks
+- ✅ Reestilar ShareLinks
 - ⬜ Reestilar PostTags
-- ⬜ Reestilar Daily
+- ✅ Reestilar Daily
 - ⬜ Reestilar Aside
 - ⬜ Reestilar Tabs y TabItem
-- ⬜ Reestilar Markdown
-- ⬜ Reestilar MarkdownHeader
+- ✅ Reestilar Markdown
+- ✅ Reestilar MarkdownHeader
 - ⬜ Reestilar Pagination
 - ⬜ Reestilar NavigationCard
 - ⬜ Reestilar FileTree
