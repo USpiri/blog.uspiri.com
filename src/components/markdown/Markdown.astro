@@ -26,7 +26,7 @@ const {
 
 <section
   data-pagefind-body={pageFind}
-  class="max-w-3xl w-full"
+  class="w-full max-w-3xl"
   transition:name={`post-${id}`}
 >
   <header class="px-3">
@@ -41,7 +41,7 @@ const {
             hideLinks={hideLinks}
           />
           <hr
-            class={`mb-5 mt-3 dark:border-neutral-500 border-neutral-400 ${
+            class={`mb-5 mt-3 border-neutral-400 dark:border-neutral-500 ${
               description === undefined ? "mt-6" : ""
             }`}
           />
@@ -50,52 +50,52 @@ const {
     }
   </header>
   <article
-    class="markdown-code markdown-article markdown-fonts markdown-image min-w-full relative rounded-lg bg-white border dark:border-transparent dark:bg-neutral-800 p-5 pt-5"
+    class="markdown-code markdown-article markdown-fonts markdown-image relative min-w-full rounded-lg border bg-white px-5 pb-5 dark:border-transparent dark:bg-neutral-800/90"
   >
     <slot />
   </article>
 </section>
 <style is:global lang="scss">
   .markdown-article {
-    @apply prose-hr:mb-8 prose prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600 prose-li:my-0;
+    @apply prose prose-li:my-0 prose-hr:mb-8 prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600;
   }
 
   .markdown-fonts {
-    @apply prose-headings:font-semibold prose-neutral dark:prose-invert prose-headings:mt-6 first:prose-headings:mt-0 prose-sm sm:prose-base;
+    @apply prose-sm prose-neutral dark:prose-invert sm:prose-base prose-headings:mt-6 prose-headings:font-semibold;
   }
 
   .markdown-code {
-    @apply prose-pre:relative prose-pre:bg-zinc-800 dark:prose-pre:bg-neutral-900 prose-pre:px-0 prose-code:after:contents prose-code:before:contents;
+    @apply prose-code:before:contents prose-code:after:contents prose-pre:bg-zinc-800 prose-pre:px-0 dark:prose-pre:bg-neutral-900;
   }
 
   .markdown-image {
-    @apply prose-img:rounded-lg prose-img:my-0;
+    @apply prose-img:my-0 prose-img:rounded-lg;
   }
 
   code {
     &:not(pre code) {
-      @apply dark:bg-neutral-700/75 bg-gray-200/50 rounded-md px-1 dark:text-neutral-200;
+      @apply rounded-md bg-gray-200/50 px-1 dark:bg-neutral-700/75 dark:text-neutral-200;
       font-weight: initial !important;
     }
   }
   p:has(img) {
-    @apply flex items-center justify-center flex-col;
+    @apply flex flex-col items-center justify-center;
   }
   [data-line] {
-    @apply px-4 whitespace-break-spaces;
+    @apply whitespace-break-spaces px-4;
   }
   [data-highlighted-line] {
     background: rgba(200, 200, 255, 0.1);
-    @apply border-l-blue-400 border-l-4;
+    @apply border-l-4 border-l-blue-400;
   }
 
   [data-highlighted-chars] {
-    @apply bg-zinc-600/50 rounded;
+    @apply rounded bg-zinc-600/50;
     box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
   }
 
   [data-chars-id] {
-    @apply shadow-none p-1 border-b-2;
+    @apply border-b-2 p-1 shadow-none;
   }
 
   [data-chars-id] span {
@@ -106,7 +106,7 @@ const {
     @apply h-full;
   }
   .copy-button {
-    @apply border h-7 hover:scale-105 hover:bg-neutral-800 focus:bg-cyan-500/50 focus:fill-neutral-300 hover:fill-neutral-300 fill-neutral-500 transition-all duration-100 p-1 border-neutral-600 rounded-md absolute top-2 end-2;
+    @apply absolute end-2 top-2 h-7 rounded-md border border-neutral-600 fill-neutral-500 p-1 transition-all duration-100 hover:scale-105 hover:bg-neutral-800 hover:fill-neutral-300 focus:bg-cyan-500/50 focus:fill-neutral-300;
   }
 </style>
 <script>
