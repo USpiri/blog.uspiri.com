@@ -17,7 +17,7 @@ published: false
 - ⬜ Reestilar Subtitle
 - ⬜ Reestilar TagLink
 - ✅ Reestilar ShareLinks
-- ⬜ Reestilar PostTags
+- ✅ Reestilar PostTags
 - ✅ Reestilar Daily
 - ⬜ Reestilar Aside
 - ⬜ Reestilar Tabs y TabItem
