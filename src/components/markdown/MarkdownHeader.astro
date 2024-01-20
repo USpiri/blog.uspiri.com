@@ -15,25 +15,27 @@ const { title, description, tags, date, hideLinks = false } = Astro.props;
 
 {
   (tags || date) && (
-    <div class="flex gap-2 mb-2 dark:text-neutral-400 text-neutral-400 text-sm items-center font-semibold">
+    <div class="mb-2 flex items-center gap-2 text-sm font-semibold text-neutral-400">
       {date && <FormattedDate date={date} />}
       {date && tags && <span>|</span>}
       {tags && <PostTags tags={tags} />}
     </div>
   )
 }
-<h1 class="text-3xl md:text-4xl font-bold mb-3">{title}</h1>
+<h1 class="mb-3 text-3xl font-bold md:text-4xl">{title}</h1>
 {
   description !== undefined && (
-    <p class="mb-3 text-sm sm:text-base font-semibold dark:text-neutral-400 text-neutral-500">
+    <p class="mb-3 text-sm font-semibold text-neutral-500 dark:text-neutral-400 sm:text-base">
       {description}
     </p>
   )
 }
 {
   !hideLinks && (
-    <aside class="flex gap-2 justify-end items-center" data-pagefind-ignore>
-      <span class="text-neutral-400 font-semibold text-sm">Comparte:</span>
+    <aside class="flex items-center justify-end gap-2" data-pagefind-ignore>
+      <span class="text-sm font-semibold text-neutral-500 dark:text-neutral-400">
+        Comparte:
+      </span>
       <ShareLinks />
     </aside>
   )
