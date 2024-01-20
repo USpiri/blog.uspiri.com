@@ -11,7 +11,23 @@ published: false
 
 ## Tareas activas recientemente
 
-- ⬜ Soporte para i18n.
+- ⬜ Reestilar AboutHeader
+- ⬜ Reestilar PostCard
+- ⬜ Reestilar Title
+- ⬜ Reestilar Subtitle
+- ⬜ Reestilar TagLink
+- ⬜ Reestilar ShareLinks
+- ⬜ Reestilar PostTags
+- ⬜ Reestilar Daily
+- ⬜ Reestilar Aside
+- ⬜ Reestilar Tabs y TabItem
+- ⬜ Reestilar Markdown
+- ⬜ Reestilar MarkdownHeader
+- ⬜ Reestilar Pagination
+- ⬜ Reestilar NavigationCard
+- ⬜ Reestilar FileTree
+- ⬜ Reemplazar LinkButton por Link
+- ❌ Soporte para i18n.
 
 ## Tareas cerradas
 
