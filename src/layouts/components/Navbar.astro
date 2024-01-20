@@ -6,11 +6,12 @@ import ThemeButton from "./ThemeButton.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Button from "@components/Button.astro";
 import MenuIcon from "@components/icons/MenuIcon.astro";
-import type { Link } from "@utils/models/links.interface";
+import Link from "@components/Link.astro";
+import type { Link as LinkType } from "@utils/models/links.interface";
 
 const currentPath = Astro.url.pathname.split("/")[1];
 
-const nav: Link[] = [
+const nav: LinkType[] = [
   { label: "Blog", path: "/blog" },
   { label: "Collections", path: "/collections" },
   { label: "Snippets", path: "/snippet" },
@@ -44,7 +45,10 @@ const nav: Link[] = [
           {
             nav.map((item) => (
               <li>
-                <LinkButton href={item.path} class="flex px-2 py-1.5">
+                <Link
+                  href={item.path}
+                  class="flex px-1.5 py-0.5 font-semibold hover:text-cyan-500"
+                >
                   <span
                     class={`${
                       currentPath.includes(item.path.slice(1)) &&
@@ -53,7 +57,7 @@ const nav: Link[] = [
                   >
                     {item.label}
                   </span>
-                </LinkButton>
+                </Link>
               </li>
             ))
           }
