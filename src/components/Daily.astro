@@ -12,11 +12,11 @@ const { title, date, id, ...props } = Astro.props;
 ---
 
 <a
-  class="flex gap-3 hover:scale-[101%] transition-all hover:bg-neutral-200/50 dark:hover:bg-neutral-800 rounded-md px-2 text-sm md:text-base"
+  class="group flex gap-3 rounded-md px-2 text-sm transition-all hover:scale-[101%] hover:bg-neutral-400/10 md:text-base"
   {...props}
 >
   <span
-    class="text-neutral-500 dark:text-neutral-400 font-medium whitespace-nowrap"
+    class="whitespace-nowrap font-medium text-neutral-500 group-hover:text-cyan-500 dark:text-neutral-400"
   >
     <FormattedDate date={date} />
   </span>
