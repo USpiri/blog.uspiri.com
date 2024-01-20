@@ -1,16 +1,13 @@
 ---
 import Button from "./Button.astro";
 import ShareIcon from "./icons/ShareIcon.astro";
-
-interface Props {
-  iconClass?: string;
-}
-
-const { iconClass } = Astro.props;
 ---
 
-<Button class="p-1 flex items-center" id="share">
-  <ShareIcon class={iconClass} />
+<Button
+  class="flex items-center fill-neutral-500 p-1 hover:fill-cyan-500"
+  id="share"
+>
+  <ShareIcon class="h-5 w-5" />
 </Button>
 
 <script>

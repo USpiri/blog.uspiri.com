@@ -6,33 +6,36 @@ import WhatsappIcon from "./icons/WhatsappIcon.astro";
 import XTwitterIcon from "./icons/XTwitterIcon.astro";
 
 const currentUrl = Astro.url;
+const links = [
+  {
+    href: `https://twitter.com/intent/tweet?text=%F0%9F%9A%A8%20Hey!%20Mira%20que%20art%C3%ADculo%20tan%20interesante%3A%0A%0A${currentUrl}/`,
+    title: "Sahre on X (Twitter)",
+    icon: XTwitterIcon,
+  },
+  {
+    href: `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}`,
+    title: "Share on Linkedin",
+    icon: LinkedinIcon,
+  },
+  {
+    href: `https://wa.me/?text=Hey!%20Mira%20que%20art%C3%ADculo%20tan%20interesante%3A%0A%0A${currentUrl}`,
+    title: "Share on Whatsapp",
+    icon: WhatsappIcon,
+  },
+];
 ---
 
-<LinkButton
-  href={`https://twitter.com/intent/tweet?text=%F0%9F%9A%A8%20Hey!%20Mira%20que%20art%C3%ADculo%20tan%20interesante%3A%0A%0A${currentUrl}/`}
-  target="_blank"
-  class="p-1"
-  title="Share on X (twitter)"
-  rel="noopener noreferrer"
->
-  <XTwitterIcon class="dark:fill-neutral-400 fill-neutral-500 h-5 w-5" />
-</LinkButton>
-<LinkButton
-  href={`https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}`}
-  target="_blank"
-  class="p-1"
-  title="Share on Linkedin"
-  rel="noopener noreferrer"
->
-  <LinkedinIcon class="dark:fill-neutral-400 fill-neutral-500 h-5 w-5" />
-</LinkButton>
-<LinkButton
-  href={`https://wa.me/?text=Hey!%20Mira%20que%20art%C3%ADculo%20tan%20interesante%3A%0A%0A${currentUrl}`}
-  target="_blank"
-  class="p-1"
-  title="Share on Whatsapp"
-  rel="noopener noreferrer"
->
-  <WhatsappIcon class="dark:fill-neutral-400 fill-neutral-500 h-5 w-5" />
-</LinkButton>
-<ShareButton iconClass="dark:fill-neutral-400 fill-neutral-500 h-5 w-5" />
+{
+  links.map((link) => (
+    <LinkButton
+      href={link.href}
+      target="_blank"
+      class="fill-neutral-500 p-1 hover:fill-cyan-500"
+      title={link.title}
+      rel="noopener noreferrer"
+    >
+      <link.icon class="h-5" />
+    </LinkButton>
+  ))
+}
+<ShareButton />
