@@ -21,11 +21,9 @@ const { title, description } = Astro.props;
   <body
     class="bg-neutral-100 text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200"
   >
-    <div class="min-h-screen">
-      <Navbar />
-      <div class="flex justify-center py-16 print:py-0 md:py-28">
-        <slot />
-      </div>
+    <Navbar />
+    <div class="flex justify-center py-16 md:py-28">
+      <slot />
     </div>
     <Footer />
   </body>
