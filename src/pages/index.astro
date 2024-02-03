@@ -2,14 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import PostCard from "@components/PostCard.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import PostDivider from "@components/PostDivider.astro";
-import Subtitle from "@components/Subtitle.astro";
 import { sortPosts } from "@utils/sort";
 import Aside from "@components/Aside.astro";
 import NavigationCard from "@components/NavigationCard.astro";
 import LinkButton from "@components/LinkButton.astro";
 import AboutHeader from "@components/AboutHeader.astro";
-import FormattedDate from "@components/FormattedDate.astro";
 interface Props {
   posts: CollectionEntry<"blog">[];
 }
