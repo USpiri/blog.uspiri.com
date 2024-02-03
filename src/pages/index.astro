@@ -1,19 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import PostCard from "@components/PostCard.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
-import { sortPosts } from "@utils/sort";
-import Aside from "@components/Aside.astro";
-import NavigationCard from "@components/NavigationCard.astro";
-import LinkButton from "@components/LinkButton.astro";
 import AboutHeader from "@components/AboutHeader.astro";
-interface Props {
-  posts: CollectionEntry<"blog">[];
-}
-
-const posts = sortPosts(await getCollection("blog"), {
-  limit: 5,
-}) as CollectionEntry<"blog">[];
+import RecentPosts from "@components/RecentPosts.astro";
+import DevelopmentNote from "@components/DevelopmentNote.astro";
 ---
 
 <Layout
@@ -22,33 +11,7 @@ const posts = sortPosts(await getCollection("blog"), {
 >
   <main class="mx-4 flex w-full max-w-3xl flex-col gap-20 md:mx-8">
     <AboutHeader />
-    <section>
-      <h2 class="text-4xl font-semibold">Posteos más recientes</h2>
-      <ul class="mt-10 flex flex-col gap-3">
-        {
-          posts.map((post) => (
-            <li>
-              <PostCard post={post} />
-            </li>
-          ))
-        }
-      </ul>
-      <div class="m-3 flex justify-end md:mx-0">
-        <LinkButton href="/blog" class="px-2 pt-1 underline"
-          >Ver más...</LinkButton
-        >
-      </div>
-    </section>
-    <section>
-      <Aside title="Nota:" type="caution">
-        <div class="flex flex-col gap-3">
-          <p>
-            Este sitio se encuentra en desarrollo, puedes ver una lista de
-            progreso en el siguiente enlace:
-          </p>
-          <NavigationCard label="Lista de tareas" href="/todo" />
-        </div>
-      </Aside>
-    </section>
+    <RecentPosts />
+    <DevelopmentNote />
   </main>
 </Layout>
