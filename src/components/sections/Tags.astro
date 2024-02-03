@@ -1,0 +1,27 @@
+---
+import TagIcon from "@components/icons/TagIcon.astro";
+import TagLink from "@components/TagLink.astro";
+import { sortPosts } from "@utils/sort";
+import { getCollection } from "astro:content";
+
+const posts = sortPosts(await getCollection("blog"));
+const tags = [
+  ...new Set(posts.map((post) => post.data.tags).flat()),
+] as string[];
+---
+
+<section>
+  <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
+    <TagIcon class="h-9" />
+    <h2>Tags</h2>
+  </div>
+  <ul class="mt-8 flex flex-wrap items-center justify-center gap-3">
+    {
+      tags.map((tag) => (
+        <li>
+          <TagLink tag={tag} href={`/tag/${tag}`} />
+        </li>
+      ))
+    }
+  </ul>
+</section>

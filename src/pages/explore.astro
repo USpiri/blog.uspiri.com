@@ -1,16 +1,7 @@
 ---
-import Subtitle from "@components/Subtitle.astro";
-import TagLink from "@components/TagLink.astro";
-import Title from "@components/Title.astro";
-import TagIcon from "@components/icons/TagIcon.astro";
+import Categories from "@components/sections/Categories.astro";
+import Tags from "@components/sections/Tags.astro";
 import Layout from "@layouts/Layout.astro";
-import { sortPosts } from "@utils/sort";
-import { getCollection } from "astro:content";
-
-const posts = sortPosts(await getCollection("blog"));
-const tags = [
-  ...new Set(posts.map((post) => post.data.tags).flat()),
-] as string[];
 ---
 
 <Layout
@@ -19,60 +10,7 @@ const tags = [
 >
   <main class="mx-4 flex w-full max-w-3xl flex-col gap-20 md:mx-8">
     <h1 class="text-5xl font-semibold">Tags y categorías</h1>
-    <section>
-      <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-        <TagIcon class="h-9" />
-        <h2>Tags</h2>
-      </div>
-      <ul class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        {
-          tags.map((tag) => (
-            <li>
-              <TagLink tag={tag} href={`/tag/${tag}`} />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-    <section>
-      <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-        <TagIcon class="h-9" />
-        <h2>Categorías</h2>
-      </div>
-      <p class="mt-8 text-neutral-600 dark:text-neutral-400">Próximamente...</p>
-    </section>
+    <Tags />
+    <Categories />
   </main>
 </Layout>
-
-<!-- <main class="mx-8 flex w-full max-w-3xl flex-col gap-20">
-  <AboutHeader />
-  <section>
-    <h2 class="text-4xl font-semibold">Posteos más recientes</h2>
-
-    <ul class="mt-10 flex flex-col gap-3">
-      {
-        posts.map((post) => (
-          <li>
-            <PostCard post={post} />
-          </li>
-        ))
-      }
-    </ul>
-    <div class="m-3 flex justify-end md:mx-0">
-      <LinkButton href="/blog" class="px-2 pt-1 underline"
-        >Ver más...</LinkButton
-      >
-    </div>
-  </section>
-  <section>
-    <Aside title="Nota:" type="caution">
-      <div class="flex flex-col gap-3">
-        <p>
-          Este sitio se encuentra en desarrollo, puedes ver una lista de
-          progreso en el siguiente enlace:
-        </p>
-        <NavigationCard label="Lista de tareas" href="/todo" />
-      </div>
-    </Aside>
-  </section>
-</main> -->
