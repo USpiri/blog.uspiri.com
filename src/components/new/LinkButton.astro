@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"a"> {
+  icon?: boolean;
+  style?: "outline" | "base" | "sm";
+  class?: string;
+}
+
+const { icon = false, style = "base", class: className } = Astro.props;
+---
+
+<a
+  class={`${icon ? (style === "sm" ? "p-1" : "p-2") : "px-2 py-1"} ${style === "outline" && "border"} ${className} group rounded-md border-neutral-300 transition-all hover:scale-105 hover:bg-neutral-500/5 active:scale-90 dark:border-neutral-500 dark:hover:bg-neutral-400/10 hover:text-cyan-500`}
+  {...Astro.props}
+>
+  <slot />
+</a>
+<style is:global>
+  svg {
+    @apply fill-neutral-500 dark:fill-neutral-200;
+  }
+</style>
