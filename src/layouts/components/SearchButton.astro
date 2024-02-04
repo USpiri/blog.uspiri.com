@@ -1,5 +1,5 @@
 ---
-import Button from "@components/Button.astro";
+import Button from "@components/new/Button.astro";
 import Dialog from "@components/Dialog.astro";
 import SearchIcon from "@components/icons/SearchIcon.astro";
 import Search from "./Search.astro";
@@ -7,11 +7,12 @@ import Search from "./Search.astro";
 
 <Button
   open-dialog
+  icon
+  style="sm"
   dialog-id="search"
   aria-label="Search articles"
-  class="fill-neutral-500 hover:fill-cyan-500"
 >
-  <SearchIcon class="h-6 md:h-5" />
+  <SearchIcon class="h-5 group-hover:fill-cyan-500 dark:fill-neutral-500" />
 </Button>
 <Dialog id="search" class="md:w-full md:max-w-lg">
   <div class="px-2 pt-3">

@@ -1,16 +1,14 @@
 ---
-import Button from "@components/Button.astro";
+import Button from "@components/new/Button.astro";
 import MoonIcon from "@components/icons/MoonIcon.astro";
 import SunIcon from "@components/icons/SunIcon.astro";
 ---
 
-<Button
-  id="toggle-dark-mode"
-  title="Theme toggle"
-  class="fill-neutral-500 hover:fill-cyan-500"
->
-  <SunIcon class="h-6 md:h-5" />
-  <MoonIcon class="hide-icon h-6 md:h-5" />
+<Button id="toggle-dark-mode" style="sm" icon title="Theme toggle">
+  <SunIcon class="h-5 group-hover:fill-cyan-500 dark:fill-neutral-500" />
+  <MoonIcon
+    class="hide-icon h-5 group-hover:fill-cyan-500 dark:fill-neutral-500"
+  />
 </Button>
 
 <script>

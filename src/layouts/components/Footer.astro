@@ -1,5 +1,5 @@
 ---
-import NewLinkButton from "@components/NewLinkButton.astro";
+import LinkButton from "@components/new/LinkButton.astro";
 import GithubIcon from "@components/icons/GithubIcon.astro";
 import LinkedinIcon from "@components/icons/LinkedinIcon.astro";
 import RssIcon from "@components/icons/RssIcon.astro";
@@ -40,36 +40,49 @@ const resources: Link[] = [
 ---
 
 <footer
-  class="mb-8 flex flex-col items-center gap-4 px-5 text-sm text-neutral-500 dark:text-neutral-400"
+  class="mb-8 mt-16 flex flex-col items-center gap-4 px-5 text-sm text-neutral-500 dark:text-neutral-400"
 >
   <div class="flex flex-col items-center gap-4 sm:flex-row">
     <section class="flex items-center gap-3">
       <div class="avatar"></div>
-      <a href="/" class="text-lg font-semibold">Uriel Spiridione | USpiri</a>
+      <a
+        href="https://uspiri.com"
+        rel="noopener noreferrer"
+        target="_blank"
+        class="text-lg font-semibold">Uriel Spiridione | USpiri</a
+      >
     </section>
     <section class="flex items-center gap-4">
       {
         media.map((item) => (
-          <NewLinkButton href={item.href} title={item.title}>
-            <item.icon class="h-4 fill-neutral-500 dark:fill-neutral-200" />
-          </NewLinkButton>
+          <LinkButton
+            href={item.href}
+            title={item.title}
+            icon
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Ir a ${item.title}`}
+          >
+            <item.icon class="h-4 dark:fill-neutral-500" />
+          </LinkButton>
         ))
       }
     </section>
   </div>
-  <div class="flex flex-col items-center gap-2">
+  <div class="flex flex-col items-center gap-4">
     <section>
       <ul class="flex flex-wrap justify-center gap-x-3">
         <li>Web:</li>
         {
           web.map((link) => (
             <li>
-              <a
+              <LinkButton
                 href={link.path}
-                class="font-bold transition-all hover:text-cyan-500 dark:hover:text-cyan-400"
+                style="sm"
+                class="text-sm font-semibold"
               >
                 {link.label}
-              </a>
+              </LinkButton>
             </li>
           ))
         }
@@ -77,20 +90,17 @@ const resources: Link[] = [
     </section>
     <section>
       <ul class="flex flex-wrap justify-center gap-x-3">
-        <li>
-          <p>Recursos:</p>
-        </li>
+        <li>Recursos:</li>
         {
           resources.map((link) => (
             <li>
-              <a
+              <LinkButton
                 href={link.path}
-                class="font-bold transition-all hover:text-cyan-500 dark:hover:text-cyan-400"
-                target="_blank"
-                rel="noopener noreferrer"
+                style="sm"
+                class="text-sm font-semibold"
               >
                 {link.label}
-              </a>
+              </LinkButton>
             </li>
           ))
         }
@@ -99,7 +109,14 @@ const resources: Link[] = [
   </div>
   <p class="text-center text-sm">
     &copy; {year}
-    <span class="font-semibold"> Uriel Spiridione</span>
+    <a
+      href="https://uspiri.com/"
+      rel="noopener noreferrer"
+      class="font-semibold"
+      target="_blank"
+    >
+      Uriel Spiridione</a
+    >
   </p>
 </footer>
 

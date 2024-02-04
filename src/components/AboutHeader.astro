@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import GithubIcon from "./icons/GithubIcon.astro";
 import LinkedinIcon from "./icons/LinkedinIcon.astro";
 import XTwitterIcon from "./icons/XTwitterIcon.astro";
-import NewLinkButton from "./NewLinkButton.astro";
+import LinkButton from "./new/LinkButton.astro";
 
 const links = [
   {
@@ -48,9 +48,15 @@ const links = [
   <div class="flex gap-3">
     {
       links.map((link) => (
-        <NewLinkButton title={link.title} href={link.href}>
-          <link.icon class="h-5 fill-neutral-500 dark:fill-neutral-200" />
-        </NewLinkButton>
+        <LinkButton
+          href={link.href}
+          title={link.title}
+          icon
+          style="outline"
+          aria-label={link.title}
+        >
+          <link.icon class="h-5" />
+        </LinkButton>
       ))
     }
   </div>
