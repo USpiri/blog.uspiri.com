@@ -1,9 +1,7 @@
 ---
 import PostCard from "@components/PostCard.astro";
-import PostDivider from "@components/PostDivider.astro";
-import Title from "@components/Title.astro";
 import TagIcon from "@components/icons/TagIcon.astro";
-import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import { sortPosts } from "@utils/sort";
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -36,11 +34,8 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<Layout
-  title={`#${tag} | Uriel Spiridione`}
-  description=`Posts referidos a #${tag}`
->
-  <main class="mx-8 w-full max-w-3xl">
+<MainLayout title={tag} description={`Posts referidos a #${tag}`}>
+  <section>
     <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
       <TagIcon class="h-9" />
       <h1>{`#${tag}`}</h1>
@@ -54,5 +49,5 @@ const { posts } = Astro.props;
         ))
       }
     </ul>
-  </main>
-</Layout>
+  </section>
+</MainLayout>

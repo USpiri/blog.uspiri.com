@@ -1,8 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
-import Title from "@components/Title.astro";
 import CollectionIcon from "@components/icons/CollectionIcon.astro";
-import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import { capitalize, slug } from "@utils/utils";
 import { getCollection } from "astro:content";
 
@@ -12,11 +11,11 @@ const collections = [
 ].filter((collection) => collection !== undefined);
 ---
 
-<Layout
+<MainLayout
   title="Colecciones de contenido | Uriel Spiridione"
   description="Posts agupados en colecciones"
 >
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
+  <section>
     <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
       <CollectionIcon class="h-9" />
       <h>Colecciones</h>
@@ -33,5 +32,5 @@ const collections = [
         ))
       }
     </ul>
-  </main>
-</Layout>
+  </section>
+</MainLayout>

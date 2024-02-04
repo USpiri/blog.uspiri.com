@@ -1,0 +1,17 @@
+---
+import Layout from "./Layout.astro";
+import Main from "@components/new/Main.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout title={`${title} | Uriel Spiridione`} description={description}>
+  <Main>
+    <slot />
+  </Main>
+</Layout>

@@ -1,11 +1,11 @@
 ---
 import NewLinkButton from "@components/NewLinkButton.astro";
 import Title from "@components/Title.astro";
-import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<Layout title="Not found" description="Página no encontrada">
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
+<MainLayout title="Not found" description="Página no encontrada">
+  <section>
     <Title>404</Title>
     <div class="px-3">
       <h3 class="mt-8 text-xl font-semibold md:text-2xl">
@@ -19,5 +19,5 @@ import Layout from "@layouts/Layout.astro";
         <span class="text-center">Llevame a la página de inicio</span>
       </NewLinkButton>
     </div>
-  </main>
-</Layout>
+  </section>
+</MainLayout>

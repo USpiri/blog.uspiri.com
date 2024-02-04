@@ -1,8 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
-import Title from "@components/Title.astro";
 import CodeblockIcon from "@components/icons/CodeblockIcon.astro";
-import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import { capitalize } from "@utils/utils";
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -31,11 +30,11 @@ const { snippets } = Astro.props;
 const { lang } = Astro.params;
 ---
 
-<Layout
-  title={`${capitalize(lang)} snippets | Uriel Spiridione`}
+<MainLayout
+  title={`${capitalize(lang)} snippets`}
   description={`Fragmentos de código de ${lang}.`}
 >
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
+  <section>
     <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
       <CodeblockIcon class="h-9" />
       <h1>{`${capitalize(lang)} code snippets`}</h1>
@@ -56,5 +55,5 @@ const { lang } = Astro.params;
         ))
       }
     </ul>
-  </main>
-</Layout>
+  </section>
+</MainLayout>

@@ -1,8 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
-import Title from "@components/Title.astro";
 import CodeblockIcon from "@components/icons/CodeblockIcon.astro";
-import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import { capitalize } from "@utils/utils";
 import { getCollection } from "astro:content";
 
@@ -12,11 +11,11 @@ const langs = [
 ] as string[];
 ---
 
-<Layout
-  title="Snippets | Uriel Spiridione"
+<MainLayout
+  title="Snippets"
   description="Fragmentos de código de distintos lenguajes de programación o extensiones de los posteos del blog"
 >
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
+  <section>
     <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
       <CodeblockIcon class="h-9" />
       <h1>Code snippets</h1>
@@ -42,5 +41,5 @@ const langs = [
         ))
       }
     </ul>
-  </main>
-</Layout>
+  </section>
+</MainLayout>

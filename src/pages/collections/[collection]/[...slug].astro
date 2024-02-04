@@ -2,6 +2,7 @@
 import NavigationCard from "@components/NavigationCard.astro";
 import Markdown from "@components/markdown/Markdown.astro";
 import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
 import type { GetStaticPaths } from "astro";
@@ -64,39 +65,37 @@ const { post, collection, prev, next } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout
-  title={`${post.data.title} | ${collection} | Uriel Spiridione`}
+<MainLayout
+  title={`${post.data.title} | ${collection}`}
   description={post.data.description}
 >
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
-    <Markdown
-      title={post.data.title}
-      description={post.data.description}
-      id={post.id}
-      pageFind={!post.data.published}
-    >
-      <Content />
-    </Markdown>
-    {
-      (prev || next) && (
-        <aside class="mt-3 flex w-full justify-center text-neutral-800 dark:text-neutral-200">
-          <div class="mx-2 flex w-full max-w-3xl flex-col gap-3 sm:mx-0 sm:flex-row">
-            {prev && (
-              <NavigationCard
-                label={prev.data.title}
-                href={`/collections/${slug(collection)}/${prev.slug}`}
-                type="prev"
-              />
-            )}
-            {next && (
-              <NavigationCard
-                label={next.data.title}
-                href={`/collections/${slug(collection)}/${next.slug}`}
-              />
-            )}
-          </div>
-        </aside>
-      )
-    }
-  </main>
-</Layout>
+  <Markdown
+    title={post.data.title}
+    description={post.data.description}
+    id={post.id}
+    pageFind={!post.data.published}
+  >
+    <Content />
+  </Markdown>
+  {
+    (prev || next) && (
+      <aside class="mt-3 flex w-full justify-center text-neutral-800 dark:text-neutral-200">
+        <div class="mx-2 flex w-full max-w-3xl flex-col gap-3 sm:mx-0 sm:flex-row">
+          {prev && (
+            <NavigationCard
+              label={prev.data.title}
+              href={`/collections/${slug(collection)}/${prev.slug}`}
+              type="prev"
+            />
+          )}
+          {next && (
+            <NavigationCard
+              label={next.data.title}
+              href={`/collections/${slug(collection)}/${next.slug}`}
+            />
+          )}
+        </div>
+      </aside>
+    )
+  }
+</MainLayout>

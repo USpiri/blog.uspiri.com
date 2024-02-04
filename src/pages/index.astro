@@ -1,17 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import AboutHeader from "@components/AboutHeader.astro";
 import RecentPosts from "@components/RecentPosts.astro";
 import DevelopmentNote from "@components/DevelopmentNote.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<Layout
-  title="Uriel Spiridione | Blog Personal"
+<MainLayout
+  title="Blog Personal"
   description="Desarrollador Full-Stack especializado en Angular con entusiasmo por el aprendizaje y la creación de experiencias web únicas y funcionales."
 >
-  <main class="mx-4 flex w-full max-w-3xl flex-col gap-20 md:mx-8">
-    <AboutHeader />
-    <RecentPosts />
-    <DevelopmentNote />
-  </main>
-</Layout>
+  <AboutHeader />
+  <RecentPosts />
+  <DevelopmentNote />
+</MainLayout>

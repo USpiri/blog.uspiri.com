@@ -1,16 +1,14 @@
 ---
 import Categories from "@components/sections/Categories.astro";
 import Tags from "@components/sections/Tags.astro";
-import Layout from "@layouts/Layout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<Layout
-  title="Explorar | Uriel Spiridione"
+<MainLayout
+  title="Explorar"
   description="Explorar las listas de tags y categorías del blog."
 >
-  <main class="mx-4 flex w-full max-w-3xl flex-col gap-20 md:mx-8">
-    <h1 class="text-5xl font-semibold">Tags y categorías</h1>
-    <Tags />
-    <Categories />
-  </main>
-</Layout>
+  <h1 class="text-5xl font-semibold">Tags y categorías</h1>
+  <Tags />
+  <Categories />
+</MainLayout>

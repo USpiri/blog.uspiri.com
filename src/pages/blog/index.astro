@@ -1,39 +1,6 @@
----
-import Pagination from "@components/Pagination.astro";
-import PostCard from "@components/PostCard.astro";
-import Layout from "@layouts/Layout.astro";
-import { sortPosts } from "@utils/sort";
-import { getCollection } from "astro:content";
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0;url=1" />
+  </head>
 
-const limit = 5;
-const posts = sortPosts(await getCollection("blog"));
-const postsSize = posts.length;
-const sorteredPosts = sortPosts(posts, { limit });
-const lastPage = Math.ceil(postsSize / limit);
----
-
-<Layout
-  title="Blog | Uriel Spiridione"
-  description="Sigue en mi blog personal para aprender temas de programación, tips, econoía, etc. No te lo pierdas!"
->
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
-    <h1 class="text-3xl font-semibold md:text-4xl">Blog</h1>
-    <ul class="mt-10 flex flex-col gap-3">
-      {
-        sorteredPosts.map((post) => (
-          <li>
-            <PostCard post={post} />
-          </li>
-        ))
-      }
-    </ul>
-    <div class="mt-8 flex justify-center md:mt-12">
-      <Pagination
-        nextPage={posts.length > limit ? `/blog/${2}` : null}
-        lastPage={posts.length > limit ? `/blog/${lastPage}` : null}
-        currentPage={1}
-        totalPages={lastPage}
-      />
-    </div>
-  </main>
-</Layout>
+</html>

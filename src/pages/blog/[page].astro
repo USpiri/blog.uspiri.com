@@ -3,10 +3,8 @@ import { sortPosts } from "@utils/sort";
 import type { Page } from "@utils/models/page.interface";
 import { getCollection, type CollectionEntry } from "astro:content";
 import PostCard from "@components/PostCard.astro";
-import PostDivider from "@components/PostDivider.astro";
-import Layout from "@layouts/Layout.astro";
 import Pagination from "@components/Pagination.astro";
-import Title from "@components/Title.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 
 export async function getStaticPaths({ paginate }: any) {
   const posts = sortPosts(await getCollection("blog"));
@@ -20,11 +18,11 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<Layout
-  title="Blog | Uriel Spiridione"
+<MainLayout
+  title="Blog"
   description="Sigue en mi blog personal para aprender temas de programación, tips, econoía, etc. No te lo pierdas!"
 >
-  <main class="mx-4 w-full max-w-3xl md:mx-8">
+  <section>
     <h1 class="text-3xl font-semibold md:text-4xl">Blog</h1>
     <ul class="mt-10 flex flex-col gap-3">
       {
@@ -49,9 +47,9 @@ const { page } = Astro.props;
             }
             nextPage={page.url.next ? page.url.next : null}
             lastPage={
-              page.currentPage !== page.lastPage
-                ? `/blog/${page.lastPage}`
-                : null
+              page.currentPage === page.lastPage
+                ? null
+                : `/blog/${page.lastPage}`
             }
             currentPage={page.currentPage}
             totalPages={page.lastPage}
@@ -59,5 +57,5 @@ const { page } = Astro.props;
         </div>
       )
     }
-  </main>
-</Layout>
+  </section>
+</MainLayout>
