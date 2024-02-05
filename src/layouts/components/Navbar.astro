@@ -11,7 +11,7 @@ import LinkButton from "@components/new/LinkButton.astro";
 const currentPath = Astro.url.pathname.split("/")[1];
 
 const nav: LinkType[] = [
-  { label: "Blog", path: "/blog" },
+  { label: "Blog", path: "/blog/1" },
   { label: "Collections", path: "/collections" },
   { label: "Snippets", path: "/snippet" },
   { label: "Daily", path: "/daily" },
@@ -19,7 +19,8 @@ const nav: LinkType[] = [
 ---
 
 <nav
-  class="sticky top-0 z-10 flex justify-center bg-neutral-100/50 px-5 text-neutral-600 backdrop-blur-md dark:bg-neutral-950/50 dark:text-neutral-400"
+  transition:animate="none"
+  class="sticky top-0 z-50 flex justify-center bg-neutral-100/50 px-5 text-neutral-600 backdrop-blur-md dark:bg-neutral-950/50 dark:text-neutral-400"
 >
   <div
     class="min-h-[3.5rem] w-full max-w-4xl items-center justify-between md:flex"
@@ -53,7 +54,9 @@ const nav: LinkType[] = [
             nav.map((item) => (
               <li
                 class={`${
-                  currentPath.includes(item.path.slice(1)) && "text-cyan-500"
+                  item.path.includes(currentPath) &&
+                  currentPath &&
+                  "text-cyan-500"
                 } flex`}
               >
                 <LinkButton href={item.path} class="w-full">

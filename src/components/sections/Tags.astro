@@ -1,8 +1,9 @@
 ---
 import TagIcon from "@components/icons/TagIcon.astro";
-import TagLink from "@components/TagLink.astro";
+import Title from "@components/new/Title.astro";
 import { sortPosts } from "@utils/sort";
 import { getCollection } from "astro:content";
+import LinkButton from "@components/new/LinkButton.astro";
 
 const posts = sortPosts(await getCollection("blog"));
 const tags = [
@@ -11,15 +12,22 @@ const tags = [
 ---
 
 <section>
-  <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-    <TagIcon class="h-9" />
-    <h2>Tags</h2>
-  </div>
+  <Title>
+    <TagIcon slot="icon" class="h-9" />
+    Tags
+  </Title>
   <ul class="mt-8 flex flex-wrap items-center justify-center gap-3">
     {
       tags.map((tag) => (
         <li>
-          <TagLink tag={tag} href={`/tag/${tag}`} />
+          <LinkButton
+            icon
+            class="flex items-center gap-1 border"
+            href={`/tag/${tag}`}
+          >
+            <TagIcon class="inline h-5" />
+            <span class="text-sm font-semibold">#{tag}</span>
+          </LinkButton>
         </li>
       ))
     }

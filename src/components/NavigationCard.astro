@@ -11,7 +11,7 @@ const { label, type = "next" } = Astro.props;
 ---
 
 <a
-  class={`${type !== "next" && "flex-row-reverse"} not-prose flex flex-[1_0_40%] items-center justify-between rounded-md border border-neutral-300 px-3 py-2 transition-all hover:bg-neutral-500/5 dark:border-neutral-600 dark:hover:bg-neutral-400/10`}
+  class={`${type !== "next" && "flex-row-reverse"} nav-link not-prose flex flex-[1_0_40%] items-center justify-between rounded-md border border-neutral-300 px-3 py-2 transition-all hover:bg-neutral-500/5 dark:border-neutral-600 dark:hover:bg-neutral-400/10`}
   {...Astro.props}
 >
   <p class="line-clamp-1 text-base font-semibold md:text-lg lg:text-xl">

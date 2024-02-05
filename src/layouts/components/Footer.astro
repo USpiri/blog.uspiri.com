@@ -36,6 +36,8 @@ const web: Link[] = [
 const resources: Link[] = [
   { label: "Rss", path: "/rss.xml" },
   { label: "Source code", path: "https://github.com/USpiri/blog.uspiri.com" },
+  { label: "Portfolio", path: "https://uspiri.com/" },
+  { label: "Cv", path: "https://cv.uspiri.com" },
 ];
 ---
 
@@ -98,6 +100,8 @@ const resources: Link[] = [
                 href={link.path}
                 style="sm"
                 class="text-sm font-semibold"
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 {link.label}
               </LinkButton>

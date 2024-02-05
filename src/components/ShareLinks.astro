@@ -1,9 +1,9 @@
 ---
-import NewLinkButton from "./NewLinkButton.astro";
 import ShareButton from "./ShareButton.astro";
 import LinkedinIcon from "./icons/LinkedinIcon.astro";
 import WhatsappIcon from "./icons/WhatsappIcon.astro";
 import XTwitterIcon from "./icons/XTwitterIcon.astro";
+import LinkButton from "./new/LinkButton.astro";
 
 const currentUrl = Astro.url;
 const links = [
@@ -27,9 +27,9 @@ const links = [
 
 {
   links.map((link) => (
-    <NewLinkButton title={link.title} href={link.href}>
-      <link.icon class="h-5 fill-neutral-500 dark:fill-neutral-200" />
-    </NewLinkButton>
+    <LinkButton style="outline" title={link.title} href={link.href} icon>
+      <link.icon class="h-5" />
+    </LinkButton>
   ))
 }
 <ShareButton />

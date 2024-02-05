@@ -1,23 +1,18 @@
 ---
-import NewLinkButton from "@components/NewLinkButton.astro";
-import Title from "@components/Title.astro";
+import NavigationCard from "@components/NavigationCard.astro";
+import Subtitle from "@components/new/Subtitle.astro";
+import Title from "@components/new/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Not found" description="Página no encontrada">
   <section>
     <Title>404</Title>
-    <div class="px-3">
-      <h3 class="mt-8 text-xl font-semibold md:text-2xl">
-        ¡Parece que has encontrado la puerta hacia la nada!
-      </h3>
-      <p class="mb-3 text-base text-neutral-500 md:text-lg">
-        ¡Lo siento por eso! Por favor, visita nuestra página de inicio para
-        llegar a donde necesitas ir
-      </p>
-      <NewLinkButton href="/" title="">
-        <span class="text-center">Llevame a la página de inicio</span>
-      </NewLinkButton>
-    </div>
+    <Subtitle>¡Parece que has encontrado la puerta hacia la nada!</Subtitle>
+    <p class="mb-3 text-base text-neutral-500 md:text-lg">
+      ¡Lo siento por eso! Por favor, visita nuestra página de inicio para llegar
+      a donde necesitas ir
+    </p>
+    <NavigationCard href="/" label="Llevame a la página de inicio" />
   </section>
 </MainLayout>

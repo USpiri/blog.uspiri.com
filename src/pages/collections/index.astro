@@ -1,6 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
 import CollectionIcon from "@components/icons/CollectionIcon.astro";
+import Title from "@components/new/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { capitalize, slug } from "@utils/utils";
 import { getCollection } from "astro:content";
@@ -16,10 +17,10 @@ const collections = [
   description="Posts agupados en colecciones"
 >
   <section>
-    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-      <CollectionIcon class="h-9" />
-      <h>Colecciones</h>
-    </div>
+    <Title>
+      <CollectionIcon class="h-9" slot="icon" />
+      Colecciones
+    </Title>
     <ul class="mt-10 flex flex-col gap-3">
       {
         collections.map((collection) => (

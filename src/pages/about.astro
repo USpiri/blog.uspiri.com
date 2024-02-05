@@ -1,7 +1,6 @@
 ---
-import Subtitle from "@components/Subtitle.astro";
-import AboutHeader from "@components/AboutHeader.astro";
-import PostDivider from "@components/PostDivider.astro";
+import Subtitle from "@components/new/Subtitle.astro";
+import AboutHeader from "@components/Hero.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 
@@ -12,7 +11,6 @@ import MainLayout from "@layouts/MainLayout.astro";
   <section class="mb-16 md:mb-14">
     <AboutHeader />
   </section>
-  <PostDivider />
   <section
     class="mb-10 mt-8 py-4 dark:bg-neutral-900 sm:rounded-lg md:mb-12 md:mt-10"
   >
@@ -31,7 +29,6 @@ import MainLayout from "@layouts/MainLayout.astro";
       </p>
     </article>
   </section>
-  <PostDivider />
   <section class="mt-8 md:mt-10">
     <Subtitle>Blog personal</Subtitle>
     <article class="mt-10 flex flex-col gap-3 px-4">

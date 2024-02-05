@@ -31,7 +31,7 @@ const { title, description, tags, date, hideLinks = false } = Astro.props;
 {tags && <PostTags tags={tags} />}
 {
   !hideLinks && (
-    <aside class="mt-4 flex gap-2" data-pagefind-ignore>
+    <aside class="mt-4 flex items-center gap-2" data-pagefind-ignore>
       <ShareLinks />
     </aside>
   )

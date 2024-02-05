@@ -1,6 +1,7 @@
 ---
 import Daily from "@components/Daily.astro";
 import LabelIcon from "@components/icons/LabelIcon.astro";
+import Title from "@components/new/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -11,10 +12,10 @@ const dailyList = (await getCollection("daily")).sort(
 
 <MainLayout title="Daily Notes" description="Colección de pequeñas notas.">
   <section>
-    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-      <LabelIcon class="h-9" />
-      <h1>Daily Notes</h1>
-    </div>
+    <Title>
+      <LabelIcon class="h-9" slot="icon" />
+      Daily Notes
+    </Title>
     <p class="mt-8 text-neutral-600 dark:text-neutral-400">
       Daily es una colección de pequeñas notas que voy haciendo dia a dia. Estas
       notas son menos formales que los artículos principales y pueden ser

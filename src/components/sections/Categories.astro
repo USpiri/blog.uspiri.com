@@ -1,11 +1,12 @@
 ---
 import TagIcon from "@components/icons/TagIcon.astro";
+import Title from "@components/new/Title.astro";
 ---
 
 <section>
-  <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-    <TagIcon class="h-9" />
-    <h2>Categorías</h2>
-  </div>
+  <Title>
+    <TagIcon slot="icon" class="h-9" />
+    Categorías
+  </Title>
   <p class="mt-8 text-neutral-600 dark:text-neutral-400">Próximamente...</p>
 </section>

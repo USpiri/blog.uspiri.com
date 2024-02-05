@@ -1,6 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
 import CodeblockIcon from "@components/icons/CodeblockIcon.astro";
+import Title from "@components/new/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { capitalize } from "@utils/utils";
 import { getCollection } from "astro:content";
@@ -16,10 +17,10 @@ const langs = [
   description="Fragmentos de código de distintos lenguajes de programación o extensiones de los posteos del blog"
 >
   <section>
-    <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-      <CodeblockIcon class="h-9" />
-      <h1>Code snippets</h1>
-    </div>
+    <Title>
+      <CodeblockIcon class="h-9" slot="icon" />
+      Code snippets
+    </Title>
     <p class="mt-8 text-neutral-600 dark:text-neutral-400">
       Fragmentos de código de distintos lenguajes de programación utilizados
       para ilustrar o proporcionar ejemplos sobre un código en particular.

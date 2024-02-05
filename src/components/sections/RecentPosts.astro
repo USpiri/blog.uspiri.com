@@ -1,8 +1,9 @@
 ---
 import PostCard from "@components/PostCard.astro";
-import LinkButton from "@components/LinkButton.astro";
+import LinkButton from "@components/new/LinkButton.astro";
 import { sortPosts } from "@utils/sort";
 import { getCollection, type CollectionEntry } from "astro:content";
+import Title from "@components/new/Title.astro";
 
 const posts = sortPosts(await getCollection("blog"), {
   limit: 5,
@@ -10,7 +11,7 @@ const posts = sortPosts(await getCollection("blog"), {
 ---
 
 <section>
-  <h2 class="text-4xl font-semibold">Posteos más recientes</h2>
+  <Title>Posteos más recientes</Title>
   <ul class="mt-10 flex flex-col gap-3">
     {
       posts.map((post) => (
@@ -20,7 +21,7 @@ const posts = sortPosts(await getCollection("blog"), {
       ))
     }
   </ul>
-  <div class="m-3 flex justify-end md:mx-0">
-    <LinkButton href="/blog" class="px-2 pt-1 underline">Ver más...</LinkButton>
+  <div class="mt-5 flex justify-end md:mx-0">
+    <LinkButton href="/blog/1" class="underline">Ver más...</LinkButton>
   </div>
 </section>
