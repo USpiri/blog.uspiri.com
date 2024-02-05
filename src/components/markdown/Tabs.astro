@@ -1,5 +1,5 @@
 ---
-import { processPanels } from "./rehype-tabs";
+import { processPanels } from "@components/internal/rehype-tabs";
 
 const panelHtml = await Astro.slots.render("default");
 const { html, panels } = processPanels(panelHtml);

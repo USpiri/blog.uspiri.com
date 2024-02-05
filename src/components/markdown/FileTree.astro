@@ -1,13 +1,13 @@
 ---
-import { fileTreeProcessor } from "./internal/rehype-file-tree";
+import { fileTreeProcessor } from "@components/internal/rehype-file-tree";
 
 const content = await Astro.slots.render("default");
 if (!/^\s*<ul>/.test(content)) {
   throw new Error(
     `<FileTree> component expects its content to be an unordered list but found HTML starting with “${content.slice(
       0,
-      20
-    )}...”`
+      20,
+    )}...”`,
   );
 }
 
@@ -29,7 +29,7 @@ const processedContent = await fileTreeProcessor.process({
     --y-pad: 0.2em;
     display: block;
     overflow-x: auto;
-    @apply rounded-lg dark:bg-neutral-900 border dark:border-none py-5 px-2;
+    @apply rounded-lg border px-2 py-5 dark:border-none dark:bg-neutral-900;
   }
 
   docs-file-tree .directory > details,
@@ -59,7 +59,7 @@ const processedContent = await fileTreeProcessor.process({
 
   docs-file-tree .directory > details > summary:hover .tree-icon,
   docs-file-tree .directory > details > summary:hover {
-    @apply dark:text-cyan-400 text-cyan-600;
+    @apply text-cyan-600 dark:text-cyan-400;
   }
 
   docs-file-tree ul:is(ul),
@@ -115,7 +115,7 @@ const processedContent = await fileTreeProcessor.process({
 
   docs-file-tree .comment {
     padding-inline-start: 2em;
-    @apply dark:text-neutral-500 text-neutral-400 font-normal dark:font-medium;
+    @apply font-normal text-neutral-400 dark:font-medium dark:text-neutral-500;
   }
 
   docs-file-tree .highlight {
@@ -123,7 +123,7 @@ const processedContent = await fileTreeProcessor.process({
     padding-inline-end: 0.5em;
     background-color: var(--theme-bg-accent);
     outline: 1px solid var(--theme-shade-subtle);
-    @apply border text-cyan-500 border-neutral-500 rounded-md;
+    @apply rounded-md border border-neutral-500 text-cyan-500;
   }
 
   .tree-icon {

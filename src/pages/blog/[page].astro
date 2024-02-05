@@ -5,7 +5,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import PostCard from "@components/PostCard.astro";
 import Pagination from "@components/Pagination.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-import Title from "@components/new/Title.astro";
+import Title from "@components/Title.astro";
 
 export async function getStaticPaths({ paginate }: any) {
   const posts = sortPosts(await getCollection("blog"));

@@ -1,9 +1,9 @@
 ---
 import TagIcon from "@components/icons/TagIcon.astro";
-import Title from "@components/new/Title.astro";
+import Title from "@components/Title.astro";
 import { sortPosts } from "@utils/sort";
 import { getCollection } from "astro:content";
-import LinkButton from "@components/new/LinkButton.astro";
+import LinkButton from "@components/LinkButton.astro";
 
 const posts = sortPosts(await getCollection("blog"));
 const tags = [

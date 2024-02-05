@@ -1,6 +1,6 @@
 ---
-import Button from "./new/Button.astro";
-import ShareIcon from "./icons/ShareIcon.astro";
+import Button from "@components/Button.astro";
+import ShareIcon from "@components/icons/ShareIcon.astro";
 ---
 
 <Button style="outline" icon id="share">
@@ -13,7 +13,7 @@ import ShareIcon from "./icons/ShareIcon.astro";
     share?.addEventListener("click", () => {
       if (navigator.share) {
         navigator.share({
-          title: `🖥️ ${document.title}`,
+          title: `${document.title}`,
           url: window.location.href,
         });
       } else {

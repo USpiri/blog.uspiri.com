@@ -1,9 +1,9 @@
 ---
 import PostCard from "@components/PostCard.astro";
-import LinkButton from "@components/new/LinkButton.astro";
+import LinkButton from "@components/LinkButton.astro";
 import { sortPosts } from "@utils/sort";
 import { getCollection, type CollectionEntry } from "astro:content";
-import Title from "@components/new/Title.astro";
+import Title from "@components/Title.astro";
 
 const posts = sortPosts(await getCollection("blog"), {
   limit: 5,
