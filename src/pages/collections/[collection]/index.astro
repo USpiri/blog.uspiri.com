@@ -1,6 +1,7 @@
 ---
 import NavigationCard from "@components/NavigationCard.astro";
 import CollectionIcon from "@components/icons/CollectionIcon.astro";
+import Title from "@components/new/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { sortPosts } from "@utils/sort";
 import { slug } from "@utils/utils";
@@ -38,20 +39,22 @@ const { collection, posts } = Astro.props;
 ---
 
 <MainLayout title={collection} description={`Posteos de ${collection}`}>
-  <div class="flex items-center gap-2 text-3xl font-semibold md:text-4xl">
-    <CollectionIcon class="h-9" />
-    <h1>{collection}</h1>
-  </div>
-  <ul class="mt-10 flex flex-col gap-3">
-    {
-      posts.map((post) => (
-        <li>
-          <NavigationCard
-            label={post.data.title}
-            href={`/collections/${slug(collection)}/${post.slug}`}
-          />
-        </li>
-      ))
-    }
-  </ul>
+  <section>
+    <Title>
+      <CollectionIcon class="h-9" slot="icon" />
+      {collection}
+    </Title>
+    <ul class="mt-10 flex flex-col gap-3">
+      {
+        posts.map((post) => (
+          <li>
+            <NavigationCard
+              label={post.data.title}
+              href={`/collections/${slug(collection)}/${post.slug}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </MainLayout>
