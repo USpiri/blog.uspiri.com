@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 import PostCard from "./PostCard.astro";
 import { sortPosts } from "@utils/sort";
 
-const posts = sortPosts(await getCollection("post"), { limit: 5 });
+const posts = sortPosts(await getCollection("post"), {
+  limit: 5,
+});
 ---
 
 {posts.map((post) => <PostCard post={post} />)}
