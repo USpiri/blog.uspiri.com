@@ -1,0 +1,23 @@
+---
+import Main from "@components/Main.astro";
+import PostCardLine from "@components/PostCardLine.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("post");
+---
+
+<Layout title="Posts">
+  <Main class="mt-10">
+    <div class="mb-6 mt-14">
+      <h2 class="font-mono text-3xl font-semibold">Posts</h2>
+    </div>
+    <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
+      {
+        posts.map((post) => (
+          <PostCardLine post={post} href={`/post/${post.slug}`} />
+        ))
+      }
+    </div>
+  </Main>
+</Layout>

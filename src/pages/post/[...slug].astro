@@ -1,0 +1,74 @@
+---
+import CalendarIcon from "@components/icons/CalendarIcon.astro";
+import TagIcon from "@components/icons/TagIcon.astro";
+import ShareIcon from "@components/icons/ShareIcon.astro";
+import EditIcon from "@components/icons/EditIcon.astro";
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection("post");
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: { post },
+  }));
+};
+
+interface Props {
+  post: CollectionEntry<"post">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<MarkdownLayout title={post.data.title} description={post.data.description}>
+  <div
+    class="not-prose flex flex-col justify-between text-neutral-500 dark:text-neutral-400 sm:flex-row"
+  >
+    <div class="mb-2 flex gap-2">
+      <div class="flex gap-1 text-xs font-semibold">
+        <CalendarIcon class="h-4 w-4" />
+        <FormattedDate date={post.data.date} />
+      </div>
+      <div class="flex gap-1 text-xs font-semibold capitalize">
+        <TagIcon class="h-4 w-4" />
+        {post.data.tags.map((tag) => <span>#{tag}</span>)}
+      </div>
+    </div>
+    <div class="mb-8 flex gap-3">
+      <button
+        id="share"
+        class="flex gap-1 text-xs font-semibold transition-colors hover:text-neutral-800 dark:hover:text-neutral-100"
+      >
+        <ShareIcon class="h-4 w-4" />Share
+      </button>
+      <a
+        href={"https://github.com/USpiri/blog.uspiri.com/blob/main/src/content/" +
+          post.slug}
+        class="flex gap-1 text-xs font-semibold transition-colors hover:text-neutral-800 dark:hover:text-neutral-100"
+      >
+        <EditIcon class="h-4 w-4" /> Edit on github
+      </a>
+    </div>
+  </div>
+
+  <Content />
+</MarkdownLayout>
+
+<script>
+  const share = document.querySelector("#share");
+  share?.addEventListener("click", () => {
+    if (navigator.share) {
+      navigator.share({
+        title: `${document.title}`,
+        url: window.location.href,
+      });
+    } else {
+      alert("Sharing is not available in this browser.");
+    }
+  });
+</script>
