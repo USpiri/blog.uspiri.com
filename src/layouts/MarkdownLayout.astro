@@ -4,13 +4,14 @@ import Layout from "./Layout.astro";
 
 interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<Layout title={title}>
-  <Main class="mark-article prose my-20 min-w-full sm:mt-28">
+<Layout title={title} description={description}>
+  <Main class="mark-article prose my-20 sm:mt-24">
     <slot />
   </Main>
 </Layout>
@@ -24,7 +25,7 @@ const { title } = Astro.props;
     /* headings */
     @apply prose-headings:font-mono prose-headings:text-neutral-600 dark:prose-headings:text-neutral-300;
     /* code */
-    @apply prose-code:before:contents prose-code:after:contents;
+    @apply prose-code:before:contents prose-code:after:contents prose-pre:relative;
 
     code {
       &:not(pre code) {
@@ -36,5 +37,43 @@ const { title } = Astro.props;
     pre[data-language="txt"] {
       text-wrap: wrap;
     }
+
+    .copy-button {
+      @apply absolute end-2 top-2 rounded border border-neutral-300 p-1 text-neutral-400 transition-all duration-100 hover:scale-105 hover:text-neutral-500 dark:border-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300;
+    }
+
+    .copy-icon {
+      @apply h-3.5 w-3.5 sm:h-4 sm:w-4;
+    }
   }
 </style>
+
+<script>
+  const check = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><path d="M20 6 9 17l-5-5"/></svg>`;
+  const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+  let blocks = document.querySelectorAll("pre");
+
+  const copyCode = async (block: any, button: any) => {
+    let code = block.querySelector("code");
+    let text = code.innerText;
+    await navigator.clipboard.writeText(text);
+    button.innerHTML = check;
+    setTimeout(() => {
+      button.innerHTML = icon;
+    }, 1000);
+  };
+
+  blocks.forEach(async (block) => {
+    if (navigator.clipboard) {
+      let button = document.createElement("button");
+
+      button.innerHTML = icon;
+      button.className = "copy-button";
+      block.appendChild(button);
+
+      button.addEventListener("click", async () => {
+        await copyCode(block, button);
+      });
+    }
+  });
+</script>
