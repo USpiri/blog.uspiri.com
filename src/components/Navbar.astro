@@ -1,15 +1,37 @@
 ---
+import DocumentIcon from "./icons/DocumentIcon.astro";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedinIcon from "./icons/LinkedinIcon.astro";
+import XIcon from "./icons/XIcon.astro";
+import LinkIcon from "./LinkIcon.astro";
 import ThemeButton from "./ThemeButton.astro";
 ---
 
 <nav
-  class="sticky top-0 mx-auto flex w-full max-w-4xl items-center justify-between px-8 py-5"
+  class="sticky top-0 mx-auto flex w-full max-w-4xl items-center justify-between px-5 py-5 sm:px-8"
 >
   <a
     href="/"
-    class="font-semibold transition-colors hover:text-neutral-950 dark:hover:text-neutral-50"
+    class="font-semibold transition-colors hover:text-neutral-400 dark:hover:text-neutral-500"
   >
     <span class="font-mono">δ./uspiri</span>
   </a>
-  <ThemeButton />
+  <div class="flex items-center gap-3">
+    <LinkIcon title="Cv" href="https://cv.uspiri.com/">
+      <DocumentIcon class="h-4 w-4" />
+    </LinkIcon>
+    <LinkIcon title="Github" href="https://github.com/USpiri/">
+      <GithubIcon class="h-4 w-4" />
+    </LinkIcon>
+    <LinkIcon title="X (Twitter)" href="https://x.com/urielspiridione/">
+      <XIcon class="h-4 w-4" />
+    </LinkIcon>
+    <LinkIcon
+      title="Linkedin"
+      href="https://www.linkedin.com/in/urielspiridione/"
+    >
+      <LinkedinIcon class="h-4 w-4" />
+    </LinkIcon>
+    <ThemeButton />
+  </div>
 </nav>
