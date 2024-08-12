@@ -5,15 +5,19 @@ import Navbar from "@components/Navbar.astro";
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "I'm Uriel Spiridione. A fullstack web developer from Argentina with +3 years of experience on front-end development. This is my personal blog",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseMeta title={title} description="Astro description" />
+    <BaseMeta title={title} description={description} />
   </head>
   <body
     class="bg-stone-200 py-8 text-neutral-700 dark:bg-[#121212] dark:text-neutral-300"
