@@ -1,0 +1,16 @@
+---
+import TagIcon from "./icons/TagIcon.astro";
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<span
+  class="flex items-center gap-1 rounded border border-neutral-400/80 px-1.5 py-1 font-mono text-xs font-medium capitalize text-neutral-600 dark:border-neutral-700 dark:text-neutral-400"
+>
+  <TagIcon class="h-3.5 w-3.5" />
+  {tag}
+</span>
