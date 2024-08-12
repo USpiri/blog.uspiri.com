@@ -1,0 +1,8 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "./PostCard.astro";
+
+const posts = await getCollection("post");
+---
+
+{posts.map((post) => <PostCard post={post} />)}
