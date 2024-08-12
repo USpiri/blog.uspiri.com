@@ -1,0 +1,54 @@
+---
+import MoonIcon from "./icons/MoonIcon.astro";
+import SunIcon from "./icons/SunIcon.astro";
+---
+
+<button id="toggle-theme">
+  <SunIcon id="sun-icon" class="hidden h-5 w-5" />
+  <MoonIcon id="moon-icon" class="hidden h-5 w-5" />
+</button>
+
+<script>
+  const moon = document.getElementById("moon-icon");
+  const sun = document.getElementById("sun-icon");
+  type ThemeType = "dark" | "light";
+
+  const theme = () => localStorage.getItem("theme") as ThemeType;
+  const systemTheme = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  let selected = () => theme() ?? systemTheme();
+
+  const updateTheme = (value?: ThemeType) => {
+    const themeToApply = value ?? selected();
+
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(themeToApply);
+
+    if (value) localStorage.setItem("theme", themeToApply);
+
+    if (themeToApply === "dark") {
+      moon?.classList.add("hidden");
+      sun?.classList.remove("hidden");
+    } else {
+      moon?.classList.remove("hidden");
+      sun?.classList.add("hidden");
+    }
+  };
+
+  updateTheme();
+
+  document.getElementById("toggle-theme")?.addEventListener("click", () => {
+    const theme = selected() === "dark" ? "light" : "dark";
+    updateTheme(theme);
+  });
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => {
+      if (!theme()) {
+        updateTheme();
+      }
+    });
+</script>
