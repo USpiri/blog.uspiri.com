@@ -1,0 +1,42 @@
+---
+import "@styles/styles.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description, image = "/public/og.png" } = Astro.props;
+---
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<!-- Global Metadata -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+
+<!-- Canonical URL & sitemap -->
+<!-- <link rel="canonical" href={canonicalURL} /> -->
+<!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
+
+<!-- Primary Metadata -->
+<title>{title}</title>
+<meta name="description" content={`${description} | Uriel Spiridione`} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={`${description} | Uriel Spiridione`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={`${description} | Uriel Spiridione`} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
