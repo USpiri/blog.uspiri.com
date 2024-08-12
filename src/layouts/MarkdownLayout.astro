@@ -1,0 +1,40 @@
+---
+import Main from "@components/Main.astro";
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <Main class="mark-article prose my-20 min-w-full sm:mt-28">
+    <slot />
+  </Main>
+</Layout>
+
+<style is:global>
+  .mark-article {
+    /* Hr */
+    @apply prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600;
+    /* font */
+    @apply prose-sm prose-neutral dark:prose-invert sm:prose-base;
+    /* headings */
+    @apply prose-headings:font-mono prose-headings:text-neutral-600 dark:prose-headings:text-neutral-300;
+    /* code */
+    @apply prose-code:before:contents prose-code:after:contents;
+
+    code {
+      &:not(pre code) {
+        @apply rounded-md bg-stone-100 px-1 dark:bg-neutral-800;
+        font-weight: initial !important;
+      }
+    }
+
+    pre[data-language="txt"] {
+      text-wrap: wrap;
+    }
+  }
+</style>
