@@ -11,7 +11,7 @@ const { title, description } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <Main class="mark-article prose my-20 sm:mt-24">
+  <Main class="mark-article prose relative my-20 overflow-hidden sm:mt-24">
     <slot />
   </Main>
 </Layout>
