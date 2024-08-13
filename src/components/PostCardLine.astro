@@ -10,7 +10,11 @@ interface Props {
 const { post, href } = Astro.props;
 ---
 
-<a href={href} class="group flex items-center gap-2 py-1">
+<a
+  href={href}
+  class="group flex items-center gap-2 py-1"
+  title={post.data.title}
+>
   <h3 class="flex-1 truncate">
     <span
       class="truncate font-mono text-base font-semibold decoration-dashed underline-offset-4 group-hover:underline sm:text-lg"
