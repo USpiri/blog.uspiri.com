@@ -2,9 +2,10 @@
 import Main from "@components/Main.astro";
 import PostCardLine from "@components/PostCardLine.astro";
 import Layout from "@layouts/Layout.astro";
+import { sortPosts } from "@utils/sort";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("post");
+const posts = sortPosts(await getCollection("post"));
 ---
 
 <Layout title="Posts">
@@ -12,7 +13,7 @@ const posts = await getCollection("post");
     <div class="mb-6 mt-14">
       <h2 class="font-mono text-3xl font-semibold">Posts</h2>
     </div>
-    <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
+    <div class="divide-y divide-neutral-300 dark:divide-neutral-800">
       {
         posts.map((post) => (
           <PostCardLine post={post} href={`/post/${post.slug}`} />

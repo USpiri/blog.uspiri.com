@@ -6,9 +6,10 @@ import EditIcon from "@components/icons/EditIcon.astro";
 import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { sortPosts } from "@utils/sort";
 
 export const getStaticPaths = async () => {
-  const posts = await getCollection("post");
+  const posts = sortPosts(await getCollection("post"));
   return posts.map((post) => ({
     params: {
       slug: post.slug,

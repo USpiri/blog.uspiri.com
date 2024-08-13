@@ -9,37 +9,18 @@ interface SortOptions {
   limit?: number;
 }
 
-/**
- * Ordena y filtra una colección de publicaciones.
- * @param posts - La colección de publicaciones a ordenar y filtrar.
- * @param options - Opciones de orden y filtrado (opcional). Si no se proporciona, se utilizan los valores por defecto:
- *   - filterDrafts: true
- *   - filterFurutePosts: true
- *   - sortByDate: true
- *   - randomize: false
- *   - limit: undefined
- * @returns La colección de publicaciones ordenada y filtrada.
- */
 export function sortPosts(
   posts: CollectionEntry<"post">[],
   options?: SortOptions,
 ) {
   const {
-    filterDrafts,
-    filterSnippets,
-    filterFurutePosts,
-    sortByDate,
-    sortDirection,
+    filterDrafts = true,
+    filterSnippets = true,
+    filterFurutePosts = true,
+    sortByDate = true,
+    sortDirection = "ASC",
     limit,
   } = {
-    // Default sorting values
-    ...{
-      filterDrafts: true,
-      filterSnippets: true,
-      filterFurutePosts: true,
-      sortByDate: true,
-      sortDirection: "DESC",
-    },
     ...options,
   };
 
