@@ -1,0 +1,29 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  size: "25" | "50" | "75" | "100";
+  class?: string;
+}
+
+const { src, alt, size, class: className } = Astro.props;
+---
+
+<img
+  src={src}
+  alt={alt}
+  style={`width: ${size}%;`}
+  class={`mx-auto ${className}`}
+/>
+
+<style is:global>
+  .dark-invert {
+    filter: invert(0.5);
+  }
+
+  .dark {
+    .dark-invert {
+      filter: invert(0);
+    }
+  }
+</style>
