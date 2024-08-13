@@ -18,7 +18,7 @@ export function sortPosts(
     filterSnippets = true,
     filterFurutePosts = true,
     sortByDate = true,
-    sortDirection = "ASC",
+    sortDirection = "DESC",
     limit,
   } = {
     ...options,
