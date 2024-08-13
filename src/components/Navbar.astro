@@ -5,17 +5,28 @@ import LinkedinIcon from "./icons/LinkedinIcon.astro";
 import XIcon from "./icons/XIcon.astro";
 import LinkIcon from "./LinkIcon.astro";
 import ThemeButton from "./ThemeButton.astro";
+
+const currentPath = Astro.url.pathname.split("/")[1];
 ---
 
 <nav
   class="sticky top-0 z-10 mx-auto flex w-full max-w-3xl items-center justify-between bg-stone-200 px-5 py-5 dark:bg-[#121212] sm:px-8"
 >
-  <a
-    href="/"
-    class="font-semibold transition-colors hover:text-neutral-400 dark:hover:text-neutral-500"
-  >
-    <span class="font-mono">δ./uspiri</span>
-  </a>
+  <div class="inline font-semibold">
+    <a href="/" class="hover:text-neutral-400 dark:hover:text-neutral-500">
+      <span class="font-mono">δ./uspiri</span>
+    </a>
+    {
+      currentPath.length > 0 && (
+        <a
+          href={`/${currentPath}`}
+          class="hover:text-neutral-400 dark:hover:text-neutral-500"
+        >
+          <span class="font-mono">/{currentPath}</span>
+        </a>
+      )
+    }
+  </div>
   <div class="flex items-center gap-3">
     <LinkIcon title="Cv" href="https://cv.uspiri.com/">
       <DocumentIcon class="h-4 w-4" />
