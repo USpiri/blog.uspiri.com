@@ -1,0 +1,78 @@
+---
+title: '"Copy code to clipboard" en Astro'
+description: '"Copy code" es funcionalidad útil a la hora de pensar en el desarrollo de un blog de programación, aprende a hacerlo y utilizalo en tus proyectos Astro.'
+date: 2023-10-21
+tags:
+  - typescript
+  - astro
+---
+
+# "Copy code to clipboard" en Astro
+
+A la hora de buscar documentación, ejemplos o artículos, muchas plataformas ofrecen la posibilidad de copiar el contenido de un bloque de código, mejorando así la experiencia para el desarrollador. Este pequeño detalle puede marcar la diferencia en la experiencia del desarrollador y, por lo tanto, es razonable desear incorporar esta funcionalidad en un blog.
+
+En particular, este artículo está pensado luego de haberlo implementado en este blog, desarrollado con Astro.
+
+## Bloques de código en Astro
+
+En Astro, cuando trabajamos con archivos en formato .md o .mdx, los bloques de código se representan en HTML de la siguiente manera:
+
+```html
+<pre>
+  <code>
+    <span>...</span>
+    <span>...</span>
+  </code>
+</pre>
+```
+
+Para implementar la funcionalidad de copiado, primero debemos identificar estos bloques de código `<pre>` y obtener el contenido de la etiqueta `<code>`.
+
+Si, en cambio, hiciéramos la búsqueda mediante los elementos `<code>`, estaríamos obteniendo los códigos "inline", y esto no es lo que estamos necesitando.
+
+```javascript
+// Obtenemos los bloques de código "<pre>"
+let blocks = document.querySelectorAll("pre");
+
+// Implementamos una acción para cada bloque
+blocks.forEach((block) => {
+  // Acciones
+});
+```
+
+## Agregando Botones de Copia
+
+Una vez identificados los bloques de código, el siguiente paso es agregar un botón (`<button>`) que permita copiar el contenido con un simple clic.
+
+```js
+// Creamos un botón
+let button = document.createElement("button");
+button.innerText = "Copiar";
+
+// Lo añadimos al bloque
+block.appendChild(button);
+
+// Establecemos un evento para que se ejecute al hacer clic
+button.addEventListener("click", () => {
+  // Aquí realizaremos la copia del contenido
+});
+```
+
+## Clipboard API
+
+La mayoría de los navegadores modernos ofrecen soporte para la [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API), la herramienta que nos proporcionará las funcionalidades necesarias para copiar y pegar.
+
+```js
+// Buscamos los <code> dentro del bloque y guardamos su texto.
+let code = block.querySelector("code");
+let text = code.innerText;
+
+// Copiamos el texto utilizando la API
+await navigator.clipboard.writeText(text);
+```
+
+Ahora, para mejorar aún más la experiencia del usuario, podemos hacer que, por ejemplo, durante un breve lapso de tiempo, el mensaje del botón cambie a "¡Copiado!" tras realizar la acción de copiar.
+
+## Resultado
+
+Es resultado son los botónes que se ven en los `codeblocks` de este Blog.

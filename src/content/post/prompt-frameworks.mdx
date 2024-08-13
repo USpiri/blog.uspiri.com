@@ -1,0 +1,86 @@
+---
+title: Prompt Frameworks
+description: Los Prompt Frameworks son estructuras que nos permiten crear prompts más efectivos al interactuar con modelos de inteligencia artificial como GPT.
+tags:
+  - chatGPT
+date: 2024-08-09
+---
+
+# Prompt Frameworks
+
+Hay muchas formas de escribir un prompt, ¡Infinitas!
+
+Algunas más o menos efectivos. Por ello, surgen los Prompt Frameworks, como una manera de estructurar los prompts para maximizar la calidad, especificidad y relevancia de las respuestas producidas por GPT. Podemos pensar en ellos como plantillas que nos ofrecen una forma organizada de comunicarnos con una Inteligencia Artificial y darle forma a sus respuestas.
+
+Estos son estructuras que nos permiten crear prompts más efectivos al interactuar con modelos de inteligencia artificial como GPT. Aquí comparto los más comúnes y fáciles de utilizar:
+
+## E.R.A
+
+- **Expectation**: Definición exacta de lo que buscamos obtener del chat/IA. Ej: En lugar de decir "Ayúdame con marketing" debemos especificar claramente nuestras expectativas, mejor "Necesito incrementar las interacciones en redes sociales en un 20% durante los próximos meses"
+- **Role**: Define el rol de la IA, quién es, cómo debe ser.
+- **Action**: Dile a la IA exactamente qué es lo que quieres que haga.
+
+```txt
+// Expectation
+Necesito incrementar las interacciones en redes sociales en un 20% durante los próximos dos meses.
+
+// Role
+Como experto en marketing digital y tus responsabilidades abarcan la creación y ejecución de estrategias de marketing en redes sociales.
+
+// Action
+Lista las mejores estrategias de redes sociales que se alineen con los valores de mi marca personal y me permitan llegar a mi audiencia objetivo.
+```
+
+ERA se encuentra como un framework multipropósito y fácil de usar, provee rápidas y detalladas respuestas. Especialmente útil para crear planes, estrategias, lluvia de ideas o ayuda a la resolución de problemas.
+
+- [Ejemplo](https://chatgpt.com/share/5b9bd9e3-5782-4a90-b7b5-72b466ae6232)
+
+## A.P.E
+
+- **Action**: El primer paso es definir o especificar la actividad que necesitamos realizar.
+- **Purpose**: Lo siguiente será definir el propósito, el objetivo que deseamos lograr.
+- **Expectation**: El último elemento son las expectativas, qué deseamos lograr con la realización de la acción definida.
+
+```txt
+// Action
+Desarrolla y planifica una estrategia de marketing detallada para nuestro próximo lanzamiento de producto.
+
+// Prupose
+Para maximizar el alcance de nuestra marca en el mercado y el conocimiento de nuestra compañía.
+
+// Expectation
+Provee un plan detallado incluyendo la descripción demográfica de nuestro público objetivo, canales de marketing tradicionales y estrategias clave de mensajería.
+```
+
+Similar al framework anterior, está orientado a generar contenido en base a objetivos. Pueden ser menos profundos para temas más complicados.
+
+- [Ejemplo](https://chatgpt.com/share/ed4f9b7b-65d1-409a-b0ff-1372cb10eb8c)
+
+## R.T.F
+
+- **Role**: Define el rol de la IA, quién es, cómo debe ser.
+- **Task**: Similar a _Action_ en los anteriores, salvo que aquí se llama task.
+- **Format**: Formato en el que queremos que se muestre nuestra información.
+
+```txt
+// Role
+Eres un talentoso escritor de blogs de programación y divulgación tecnológica.
+
+// Task
+Tu tarea es elaborar un titular para un post sobre distintas metodologías de comunicación con una IA y listar los tags para calificar dicho post.
+
+// Format
+Escribe el titular y la lista de tags en formato markdown.
+```
+
+Este framework nos introduce el concepto de formato, permitiendo indicar a la IA en que formato queremos la respuesta como "código de programación", "Lista", "Tabla", "JOSN", "Markdown", "Presentación". Es ideal para hacer consultas rápidas y específicas.
+
+- [Ejemplo](https://chatgpt.com/share/0a9901b2-3aa9-4df0-9941-0f4160926209)
+
+---
+
+Existen muchos frameworks, estos de aquí son algunos de los más simples y conocidos, en [este post](https://medium.com/@djanan/ai-prompt-frameworks-that-will-make-you-millions-0edaad338658) se describen otros más complejos como 4c o Chain of Thought (CoT) que me parecen muy interesantes. Tambien otros como [RISE](https://beeazt.com/knowledge-base/prompt-frameworks/the-rise-framework/), RISEN (Variante del anterior) que agregan contextos, TAG, o [ELI5](https://beeazt.com/knowledge-base/prompt-frameworks/the-explain-like-i-am-five-eli5-framework/) que me pareció gracioso, literalmente su acrónimo se traduce como "Explain Like I'm 5".
+
+En general veo que están compuestos por bloques, incluso dependiendo del autor puede que el nombre de cada bloque varíe, otros cambian el orden de los _"bloques"_. Dejo [un video](https://www.youtube.com/watch?v=jC4v5AS4RIM&t=40s) didáctico que explica un poco estos bloques.
+
+El resultado depende del modelo utilizado, GPT 3.5 y 4o me dieron resultados muy distintos para el mismo prompt, siendo claramente 4o más detallado que su predecesor.

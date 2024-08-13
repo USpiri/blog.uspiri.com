@@ -1,0 +1,72 @@
+---
+title: Data strcutures
+description: "Un Data sructure es una forma particular de organizar datos dentro de una computadora para que estos puedan ser utilizados de forma eficiente."
+tags:
+  - data
+date: 2024-06-08
+---
+
+import Image from "@components/Image.astro";
+
+# Data structures
+
+Una estructura de datos (data strcuture) es una forma particular de organizar datos dentro de una computadora para que estos puedan ser utilizados de forma eficiente.
+
+La elección de una buena estructura de datos nos permitirá hacer distintos tipos de operaciones de forma efectiva minimizando el uso de memoria y el tiempo de ejecución de la operación. Los distintos tipos de estructuras se adaptan a distintos tipos de aplicaciones, algunas altamente especializadas para tareas concretas.
+
+## Array
+
+Son una colección ordenada de datos, es decir, un conjunto de datos dispuestos en un orden específico. Por lo general se utiliza un numero entero (integer), comenzando por el cero, para acceder a un elemento en particular. Estos se encuentran dispuestos de manera contigua dentro de la memoria y suelen listar un mismo tipo de dato, pero estas últimas características no es siempre son necesarias pero los hacen eficientes a la hora de obtener, filtrar y manipular conjuntos de datos homogéneos.
+
+<Image
+  src="https://lh3.googleusercontent.com/d/13DNEIyg1oj1EFhkm741DxCUsetcxoQTi"
+  alt="Array"
+  size="75"
+  class="dark-invert"
+/>
+
+## Linked List
+
+Son una colección linear de elementos de cualquier tipo, llamados nodos, en donde cada uno de ellos posee un valor (datos) y un puntero que lleva al siguiente nodo de la lista. La principal ventaja con respecto a los arrays es que los datos pueden ser insertados o removidos sin necesidad de relocar el resto de elementos de la lista.
+
+<Image
+  src="https://lh3.googleusercontent.com/d/1knRaxpdp-Es-V16iO_niAlv4WHYewc5V"
+  alt="Hash talbes"
+  size="100"
+  class="dark-invert"
+/>
+
+## Hash tables
+
+También llamados hash maps son estructuras que proporcionan una rápida recuperación de valores basados en claves. Utilizan una función hash para asignar una clave a cada índice de una matriz de datos permitiendo un acceso en tiempo constante en caso promedio. Comúnmente utilizadas en bases de datos indexadas. Los elementos no se encuentran necesariamente ordenados.
+
+<Image
+  src="https://lh3.googleusercontent.com/d/1uKIMDB2KA0qbBYnQTsU_mLX8QRqVUMmw"
+  alt="Hash talbes"
+  size="75"
+  class="dark-invert"
+/>
+
+## Stack y Queues
+
+Son abstracciones de datos que se pueden implementar a partir de un array o listas enlazadas. Estos tienen dos funcionalidades principales: Push, que agrega un elemento a la pila ,y Pop, que retira el último elemento de la pila. Los stacks siempre siguen la estructura LIFO (Last in, First out).
+
+<Image
+  src="https://lh3.googleusercontent.com/d/1x-4-VVBig3W402BeY8rb3eAEb_R18hM-"
+  alt="Stack and Queues"
+  size="50"
+  class="dark-invert"
+/>
+
+Las colas o Queues son similares pero siguen el sistema FIFO (First In, First Out) en donde el primer elemento que entra a cola es el primero que sale.
+
+## Trees
+
+Representan una organización de elementos jerárquica. Un árbol consiste en un nodo principal (usualmente denominado root) conectado a otros nodos formando ramificaciones. Similar a tener carpetas con subcarpetas dentro. Ellos permiten realizar búsquedas optimas y tener una representación jerárquica de los datos.
+
+<Image
+  src="https://lh3.googleusercontent.com/d/1s5KvDawYI1YAi83IT-sBLkJLc60ZZUp8"
+  alt="Stack and Queues"
+  size="75"
+  class="dark-invert"
+/>

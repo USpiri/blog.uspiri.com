@@ -1,0 +1,42 @@
+---
+title: '"Copy code to clipboard" snippet'
+description: '"Copy code" es funcionalidad útil a la hora de pensar en el desarrollo de un blog de programación, aprende a hacerlo y utilizalo en tus proyectos Astro.'
+date: 2023-10-21
+tags:
+  - typescript
+  - astro
+snippet: true
+---
+
+```ts
+// Obtenemos los bloques de código "<pre>"
+let blocks = document.querySelectorAll("pre");
+
+// Implementamos una acción para cada bloque
+blocks.forEach(async (block) => {
+  if (navigator.clipboard) {
+    // Creamos un botón
+    let button = document.createElement("button");
+    button.innerText = "Copiar";
+
+    // Lo añadimos al bloque
+    block.appendChild(button);
+
+    // Establecemos un evento para que se ejecute al hacer clic
+    button.addEventListener("click", async () => {
+      // Buscamos los <code> dentro del bloque y guardamos su texto.
+      let code = block.querySelector("code");
+      let text = code.innerText;
+
+      // Copiamos el texto utilizando la API
+      await navigator.clipboard.writeText(text);
+
+      // ¡Copiado!
+      button.innerText = "¡Copiado!";
+      setTimeout(() => {
+        button.innerText = "Copiar";
+      }, 1000);
+    });
+  }
+});
+```
