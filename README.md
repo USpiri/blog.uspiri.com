@@ -1,54 +1,38 @@
-# Astro Starter Kit: Basics
+<a name="readme-top"></a>
 
-```sh
-npm create astro@latest -- --template basics
-```
+# ✨ Minimalist personal Blog
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+<br />
+<div align="center">
+  <a href="https://blog.uspiri.com/">
+    <img src="https://blog.uspiri.com/favicon.svg" alt="Blog Site Logo" width="80" height="80">
+  </a>
+  <p align="center">
+    My personal blogsite ✍🏻
+    <br />
+    <a href="https://github.com/USpiri/next-notes/"><strong>Explore the site »</strong></a>
+    <br />
+  </p>
+</div>
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## About my blog
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+[![Blog Shot][blog-screenshot]](https://blog.uspiri.com)
 
-## 🚀 Project Structure
+[blog-screenshot]: https://github.com/user-attachments/assets/cd63ecc1-fe0a-420a-9104-6665f9634439
 
-Inside of your Astro project, you'll see the following folders and files:
+This project is a minimalist personal website built with [Astro](https://astro.build/) a modern framework for creating fast and easy-to-maintain websites. The design is clean and focused on simplicity, ideal for a personal blog.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠️ Technologies Used
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- [Astro](https://astro.build/): Main framework for creating the site.
+- [Tailwind](https://tailwindcss.com/): Basic and minimalist stylization.
+- [Markdown](https://www.markdownguide.org/) & [MDX](https://mdxjs.com/): For creating content easily and quickly.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🚀 Features
 
-Any static assets, like images, can be placed in the `public/` directory.
+![image](https://github.com/user-attachments/assets/e347e85e-a088-4061-895a-98e577feb64f)
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Performance**: Static content generation for fast loading and minimal js.
+- **Responsive design**: Adapted for all devices, from mobile phones to large monitors.
+- **SEO**
