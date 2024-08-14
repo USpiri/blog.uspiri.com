@@ -36,7 +36,7 @@ const { post } = Astro.props;
       title={post.data.title}
       class="group flex items-center gap-0.5 text-xs font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 sm:text-sm"
     >
-      Read more
+      Read more <span class="sr-only">about {post.data.title}</span>
       <ChevronRightIcon
         class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
       />
