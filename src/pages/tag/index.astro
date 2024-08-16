@@ -1,0 +1,37 @@
+---
+import ChevronRightIcon from "@components/icons/ChevronRightIcon.astro";
+import TagIcon from "@components/icons/TagIcon.astro";
+import Main from "@components/Main.astro";
+import Layout from "@layouts/Layout.astro";
+import { sortPosts } from "@utils/sort";
+import { getCollection } from "astro:content";
+
+const posts = sortPosts(await getCollection("post"));
+const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+---
+
+<Layout title="Tags">
+  <Main class="mb-40 mt-10 overflow-hidden">
+    <div class="mb-6 mt-14">
+      <h2 class="font-mono text-3xl font-semibold">Tags</h2>
+    </div>
+    <ul class="divide-y divide-neutral-300 dark:divide-neutral-800">
+      {
+        tags.map((tag) => (
+          <li class="py-1 font-mono font-medium capitalize">
+        <a
+          href={`/tag/${tag}`}
+          title={`Go to #${tag} page`}
+          class="group flex items-center justify-between gap-4 decoration-dashed underline-offset-4 hover:underline">
+              <span class="flex items-center gap-2">
+                <TagIcon class="h-4 w-4" />
+                {tag}
+              </span>
+              <ChevronRightIcon class="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Main>
+</Layout>
