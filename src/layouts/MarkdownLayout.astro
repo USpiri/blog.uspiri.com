@@ -29,6 +29,8 @@ const { title, description } = Astro.props;
     @apply prose-h1:font-[650];
     /* code */
     @apply prose-code:before:contents prose-code:after:contents prose-pre:relative;
+    /* image */
+    @apply prose-img:rounded;
 
     code {
       &:not(pre code) {

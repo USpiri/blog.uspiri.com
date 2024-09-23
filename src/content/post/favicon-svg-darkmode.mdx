@@ -1,0 +1,52 @@
+---
+title: "Darkmode en favicons SVG"
+description: 'Desde 2020 la mayoría de los navegadores da soporte para favicons SVG. Veamos cómo hacer que estos cambien de color según el "theme".'
+date: 2024-08-20
+tags:
+  - css
+---
+
+import Image from "@components/Image.astro";
+
+# Dark mode en favicons SVG
+
+Desde el 2020, la mayoría de los navegadores han comenzado a dar soporte a favicons en formato `.svg`, actualmente comprende [algo más del 76%](https://caniuse.com/link-icon-svg) de los navegadores.
+
+El uso de favicons en formato [SVG](https://en.wikipedia.org/wiki/SVG) permite escalar su tamaño sin pérdida de calidad. Además, este formato nos permite tener CSS incorporado, lo que abre la posibilidad a hacer algunos cambios dependiendo del tema (claro u oscuro) que esté utilizando nuestro usuario. Esto lo lograremos haciendo uso de las media queries que reaccionan a la preferencia de color del sistema operativo.
+
+<Image
+  src="/images/favicon-svg-color-sheme.gif"
+  alt="Favicon change color on dark mode"
+/>
+
+## Implementación de favicons SVG
+
+Lo primero es utilizar un archivo `.svg` en lugar del `.ico` dentro del `index.html` de nuestra página o aplicación web. Aquí el cambio más importante es en `type`.
+
+```html
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+```
+
+## Aplicación del "Dark mode"
+
+Lo siguiente es la Implementación de un SVG que responde a las preferencias del usuario utilizando el atributo `prefers-color-scheme`. Para ello podemos incorporar CSS dentro de la etiqueta `<style />`
+
+```html
+<svg viewBox="0 0 128 128">
+  <path d="Números raros" />
+  <style>
+    path {
+      fill: #000;
+    }
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: #fff;
+      }
+    }
+  </style>
+</svg>
+```
+
+En este pequeño snippet se puede ver cómo se utiliza `prefers-color-scheme: dark` para intercambiar el color de relleno del elemento `<path />` cuando el usuario se encuentra en modo oscuro. Puedes hacer una prueba cambiando el _theme_ de tu ordenador y **refrescar** esta misma página, como se muestra en el gif del principio.
+
+Para profundizar más en el uso de SVG y sus elementos, existen guías como [SVG Pahts](https://www.nan.fyi/svg-paths) de [@nandafyi](https://x.com/nandafyi) que detallas su funcionamiento y ofrece tanto ejemplos cómo ejercicios para mejorar su comprensión.

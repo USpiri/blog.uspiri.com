@@ -1,0 +1,83 @@
+---
+title: ¿Porqué esperar dos veces al usar fetch?
+description: Es lógico tener que esperar la respuesta de un servidor, pero ¿Porqué tenemos que volver a esperar nuevamente que la respuesta se transforme en JSON?
+tags:
+  - javascript
+date: 2024-09-23
+---
+
+# ¿Por qué debemos esperar dos veces al usar `fetch`?
+
+Si alguna vez has trabajado con peticiones `fetch` en JavaScript, seguramente te topaste con un código como este:
+
+```typescript
+const response = await fetch("https://example.org/products.json");
+const data = await response.json();
+```
+
+O, una variante con `.then`:
+
+```typescript
+const data = await fetch("https://example.org/products.json").then((response) =>
+  response.json(),
+);
+```
+
+Es bastante lógico que tengamos que esperar una vez para obtener la respuesta del servidor. Pues, estamos solicitando datos de un servidor remoto que puede tardar en realizar sus procesos.
+
+Pero, ¿Porqué tenemos que volver a esperar nuevamente que la respuesta se transforme en JSON?
+
+Una respuesta rápida sería que el método `json()` retorna una promesa, que si, es una respuesta válida y parte de la Fetch API. Pero ¿porqué lo hace? Si podríamos simplemente parsear la response con `JSON.parse()` de forma síncrona.
+
+## La doble espera
+
+Como nos indica MDN sobre la [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), al realizar una petición `fetch`, el primer `await` espera a que la **respuesta del servidor** ni bien este disponible, lo más pronto posible.
+
+> It returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to the [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) to that request — as soon as the server responds with headers — **even if the server response is an HTTP error status**.
+
+Aquí es dónde entra la segunda espera, el método `json()`. Este método es **asincrónico** porque **el body puede continuar en camino**: Aunque el cliente recibe los headers del servidor rápidamente, el **cuerpo** puede no haber llegado por completo, especialmente si se trata de un archivo grande.
+
+Hacer esto de manera asíncrona evita bloquear el hilo principal de JavaScript mientras llegan y se transforman los datos.
+
+## Recibir y transformar los datos: `json()`
+
+Cuando usas `await response.json()`, en realidad estás esperando que se completen dos cosas:
+
+- Que todos los **bytes del cuerpo de la respuesta** lleguen al cliente.
+- Que el contenido de esos bytes se convierta a un formato útil (en este caso, un objeto JavaScript).
+
+Agreguemos un par de comentarios al código anterior para entender mejor el funcionamiento:
+
+```typescript
+const response = await fetch("https://example.org/products.json");
+
+// En este punto:
+// - El cliente recibió el header
+// - El body de la request, probablemente,
+// todavía este en camino
+
+const data = await response.json();
+
+// En este punto:
+// - El cliente recibió el header y el body
+// - El cliente transformó el body en un objeto
+// de javascript
+```
+
+## Utilidad?
+
+El hecho de tener que esperar dos veces en lugar de hacer todo el proceso en un solo método puede parecer poco útil o más complicado, pero ofrece sus ventajas.
+
+Con el `response` separado de `json()`, podemos manejar los errores de la petición antes de intentar procesar los datos. Por ejemplo, si el servidor nos responde con un error 404 o 500, podemos abortar la operación antes de terminar de leer el `body`. MDN, nuevamente, nos da [un ejemplo de ello](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
+
+```typescript
+const response = await fetch("https://example.org/products.json");
+
+if (!response.ok) {
+  throw new Error(`Error: ${response.status}`);
+}
+
+const data = await response.json();
+```
+
+Este puede ser el ejemplo más usual y sencillo, pero es posible ejecutar otras acciones dependiendo de los `Headers` que obtengamos: enviar notificaciones, redireccionar al usuario, etc.
