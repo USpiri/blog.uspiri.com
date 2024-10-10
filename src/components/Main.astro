@@ -3,11 +3,13 @@ import { cn } from "@utils/cn";
 
 interface Props {
   class?: string;
+  as?: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, as = "main" } = Astro.props;
+const Element = as;
 ---
 
-<main class={cn("mx-auto w-full max-w-3xl px-5 sm:px-8", className)}>
+<Element class={cn("mx-auto w-full max-w-3xl px-5 sm:px-8", className)}>
   <slot />
-</main>
+</Element>

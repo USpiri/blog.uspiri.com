@@ -1,6 +1,7 @@
 ---
 import Main from "@components/Main.astro";
 import PostCardLine from "@components/PostCardLine.astro";
+import SectionHeading from "@components/SectionHeading.astro";
 import Layout from "@layouts/Layout.astro";
 import { sortPosts } from "@utils/sort";
 import { getCollection } from "astro:content";
@@ -9,11 +10,9 @@ const posts = sortPosts(await getCollection("post"));
 ---
 
 <Layout title="Posts">
-  <Main class="mb-40 mt-10 overflow-hidden">
-    <div class="mb-6 mt-14">
-      <h2 class="font-mono text-3xl font-semibold">Posts</h2>
-    </div>
-    <div class="divide-y divide-neutral-300 dark:divide-neutral-800">
+  <Main class="mb-40 mt-16 sm:mt-24">
+    <SectionHeading title="Posts" />
+    <div class="mt-5 divide-y divide-neutral-300 dark:divide-neutral-800">
       {
         posts.map((post) => (
           <PostCardLine post={post} href={`/post/${post.slug}`} />
