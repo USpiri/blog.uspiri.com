@@ -5,19 +5,26 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Posts">
-  <Main class="mt-10">
-    <div class="mb-6 mt-14">
+  <Main class="mb-40 mt-16 flex flex-col gap-10 sm:mt-20">
+    <div>
       <h2 class="font-mono text-3xl">Ups! 404</h2>
     </div>
-    <div class="mb-6">
-      Don't miss the latest posts or read more
+    <p>
+      Don't miss the latest posts
       <a
         href="/post"
         class="font-semibold underline decoration-dashed underline-offset-4 hover:opacity-60"
       >
         here
       </a>
-    </div>
+      or explore the
+      <a
+        href="/playground"
+        class="font-semibold underline decoration-dashed underline-offset-4 hover:opacity-60"
+      >
+        playground
+      </a>
+    </p>
     <div class="flex flex-col gap-3">
       <LatestPostList />
     </div>
