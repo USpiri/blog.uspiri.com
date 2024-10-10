@@ -1,0 +1,36 @@
+---
+import ChevronRightIcon from "./icons/ChevronRightIcon.astro";
+
+interface Props {
+  level?: "h1" | "h2" | "h3";
+  title: string;
+  href?: string;
+  linkTitle?: string;
+  linkLabel?: string;
+}
+
+const {
+  level = "h1",
+  title,
+  href,
+  linkLabel = "More",
+  linkTitle,
+} = Astro.props;
+
+const Heading = level;
+---
+
+<hgroup class="flex justify-between">
+  <Heading class="font-mono text-3xl font-semibold">{title}</Heading>
+  <a
+    href={href}
+    class="group flex items-center gap-0.5 text-sm font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
+    title={linkTitle}
+  >
+    {linkLabel}
+    <span class="sr-only">See all blog posts</span>
+    <ChevronRightIcon
+      class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+    />
+  </a>
+</hgroup>

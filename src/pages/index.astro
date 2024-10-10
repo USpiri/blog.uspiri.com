@@ -1,36 +1,34 @@
 ---
-import ChevronRightIcon from "@components/icons/ChevronRightIcon.astro";
 import LatestPostList from "@components/LatestPostList.astro";
 import Main from "@components/Main.astro";
+import Me from "@components/Me.astro";
+import SectionHeading from "@components/SectionHeading.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Blog">
-  <Main class="mb-40 mt-10">
-    <div class="flex flex-col text-sm">
-      <p>I'm <span class="text-base font-semibold">Uriel Spiridione</span></p>
-      <p>
-        A fullstack web developer from Argentina with +3 years of experience on
-        front-end development.
+  <Main class="mb-40 mt-16 flex flex-col gap-16 sm:mt-20 sm:gap-24">
+    <Me />
+    <section>
+      <SectionHeading
+        title="Posts"
+        href="/post"
+        linkTitle="See all blog posts"
+      />
+      <div class="mt-5 flex flex-col gap-3">
+        <LatestPostList />
+      </div>
+    </section>
+    <section>
+      <SectionHeading
+        title="Playground"
+        href="/post"
+        linkTitle="See all blog posts"
+      />
+      <p class="mt-5 text-sm sm:w-3/4">
+        Where I can explore concepts, <strong>experiment</strong> with code, and
+        build interactive projects to showcase different ideas or concepts.
       </p>
-    </div>
-
-    <div class="mb-6 mt-14 flex justify-between">
-      <h2 class="font-mono text-3xl font-semibold">Posts</h2>
-      <a
-        href="/post/"
-        class="group flex items-center gap-0.5 text-sm font-medium text-neutral-600 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-        title="See all blog posts"
-      >
-        More
-        <span class="sr-only">See all blog posts</span>
-        <ChevronRightIcon
-          class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-        />
-      </a>
-    </div>
-    <div class="flex flex-col gap-3">
-      <LatestPostList />
-    </div>
+    </section>
   </Main>
 </Layout>
