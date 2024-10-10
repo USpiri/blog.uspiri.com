@@ -1,0 +1,31 @@
+---
+import BaseMeta from "@components/BaseMeta.astro";
+import { cn } from "@utils/cn";
+
+interface Props {
+  title: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  title,
+  description = "I'm Uriel Spiridione. A fullstack web developer from Argentina with +3 years of experience on front-end development. This is my personal blog",
+  class: className,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseMeta title={title} description={description} />
+  </head>
+  <body
+    class={cn(
+      "bg-stone-200 text-neutral-700 dark:bg-[#121212] dark:text-neutral-300",
+      className,
+    )}
+  >
+    <slot />
+  </body>
+</html>

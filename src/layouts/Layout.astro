@@ -1,31 +1,20 @@
 ---
-import BaseMeta from "@components/BaseMeta.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
+import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const {
-  title,
-  description = "I'm Uriel Spiridione. A fullstack web developer from Argentina with +3 years of experience on front-end development. This is my personal blog",
-} = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseMeta title={title} description={description} />
-  </head>
-  <body
-    class="bg-stone-200 py-8 text-neutral-700 dark:bg-[#121212] dark:text-neutral-300"
-  >
-    <div class="grid min-h-dvh grid-rows-[auto_1fr]">
-      <Navbar />
-      <slot />
-    </div>
-    <Footer />
-  </body>
-</html>
+<BaseLayout class="py-8" title={title} description={description}>
+  <div class="grid min-h-dvh grid-rows-[auto_1fr]">
+    <Navbar />
+    <slot />
+  </div>
+  <Footer />
+</BaseLayout>
