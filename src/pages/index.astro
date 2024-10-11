@@ -22,7 +22,7 @@ import Layout from "@layouts/Layout.astro";
     <section>
       <SectionHeading
         title="Playground"
-        href="/post"
+        href="/playground"
         linkTitle="See all blog posts"
       />
       <p class="mt-5 text-sm sm:w-3/4">
@@ -32,3 +32,21 @@ import Layout from "@layouts/Layout.astro";
     </section>
   </Main>
 </Layout>
+<script>
+  import { scrambleEffect } from "@utils/scramble";
+  const playgroundTitle = document.querySelectorAll("h1")[1];
+
+  const startAnimation: IntersectionObserverCallback = (entries, observer) => {
+    entries.forEach((e) => {
+      scrambleEffect(e.target, 300);
+      if (e.isIntersecting) observer.unobserve(e.target);
+    });
+  };
+
+  const observer = new IntersectionObserver(startAnimation, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1,
+  });
+  observer.observe(playgroundTitle);
+</script>
