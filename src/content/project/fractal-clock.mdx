@@ -1,0 +1,92 @@
+---
+title: Fractal Clock
+description: Representación artística de un reloj convencional de doce horas que utiliza principios de geometría fractal para mostrar la hora actual de manera visual.
+file: fractal-clock.html
+tags:
+  - javascript
+  - html
+  - canvas
+date: 2024-10-14
+cssclasses: dark:[&>p>img]:invert-[50%]
+---
+
+# Fractal Clock
+
+Los fractales son figuras geométricas que pueden ser divididas en _fragmentos_, cada uno de los cuales es una copia a distinta escala de la figura anterior. Una característica clave de estos es la **autosimilitud**, lo que significa que, sin importar cuánto ampliemos la figura, seguiremos viendo la misma estructura repetida una y otra vez.
+
+En la práctica estos son útiles en diferentes áreas, tanto para estudios biológicos (Crecimiento de tejidos, organización celular), captura de frecuencias de radio, técnicas de compresión (audio y vídeo), entre otros.
+
+**Fractal clock** es la representación artística de un reloj convencional de doce horas que utiliza principios de geometría fractal para mostrar la hora actual de manera visual. En lugar de las clásicas manecillas, cada una se despliega como una estructura fractal que se ramifica a si misma, con submanecillas que indican los minutos y los segundos de la misma forma.
+
+## La paradoja de los fractales
+
+Una de las propiedades más asombrosas de algunos de los fractales es que pueden tener áreas finitas, pero perímetros infinitos. Lo que contradice la intuición geométrica clásica. Veamos un caso simple: el [Triángulo de Sierpinski](https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Sierpinski).
+
+En general, este fractal parte de un triángulo equilátero inicial con lados de longitud 1 (por comodidad), se unen los puntos medios de cada lado y se extrae el triángulo central interno.
+
+![triangulo-sierpinski.png](/images/triangulo-sierpinski.png)
+
+A simple vista, y sin entrar en formulaciones matemáticas, podemos ver que a medida que ocurren $n$ iteraciones del patrón, el área negra del triángulo es cada vez menor, por lo que podemos decir que el área es cada vez más pequeña. Con el perímetro sucede lo contrario, cada vez hay más líneas entre medio de los triángulos haciendo que este tienda a infinito. Veamos cada caso.
+
+### El perímetro infinito
+
+Para el caso del perímetro, el borde o las líneas que componen la figura, son cada vez más. Es decir, en la primer iteración (simplemente un triángulo), el área es la suma de sus lados:
+
+$$
+P = 3*l = 3
+$$
+
+Para la segunda iteración, ahora debemos sumar el perímetro formato por el triángulo interno. El lado de cada triángulo ahora es $l/2$, por lo que su perímetro es $3 \times (l/2)$ y, cómo tenemos 3 triángulos, el perímetro de la segunda iteración es:
+
+$$
+P = (3 \times \frac{l}{2}) \times 3
+$$
+
+O, lo que es lo mismo:
+
+$$
+P = \Big(\frac{l}{2}\Big) \times 3^2 = 4.5
+$$
+
+Si definimos a $n$ cómo la cantidad de iteraciones que se realizó sobre el patrón, podemos definir una generalización, en dónde por cada nueva iteración vemos que el perímetro es más grande:
+
+$$
+\lim_{n\to\infty}P_n = \Big(\frac{l}{n}\Big) \times 3^n = \infty
+$$
+
+### El área finita
+
+El caso de los triángulos de Sierpinsky, es particular y fácil de demostrar dado que su área tiende a cero, pero lo correcto sería decir que tienen _"área finita"_.
+
+Digamos que $A$ es el área del triángulo _"base"_, es decir, en la primer iteración. Cada iteración genera tres nuevos triángulos iguales quitando uno del medio, o sea $3/4$ del área total:
+
+$$
+A_1 = A_0 \frac{3}{4}
+$$
+
+En la siguiente iteración cada uno de los triángulos (más chicos) tiene, nuevamente $3/4$ del área que los generó:
+
+$$
+A_2 = A_1 \frac{3}{4}
+= A_0 \times \frac{3}{4} \times \frac{3}{4}
+$$
+
+Podemos expresar una generalización del área para $n$ iteraciones:
+
+$$
+A_n = \Big( \frac{3}{4} \Big)^n A_0
+$$
+
+Finalmente, si la cantidad de iteraciones es infinita ($n =  \infty$), veremos que el área, para el caso de los triángulos de Sierpinsky tiende a 0.
+
+$$
+A_{\infty} = \lim_{n \to \infty} A_n
+= A_0 \lim_{n \to \infty}\Big( \frac{3}{4} \Big)^n
+= 0
+$$
+
+---
+
+Resulta sorprendente pensar que un perímetro prácticamente infinito pueda contener un área nula. También resulta interesante ver la dimensionalidad de un fractal, pero ya excede la intención de este post, igualmente [éste artículo](https://es.wikipedia.org/wiki/Dimensi%C3%B3n_fractal) de Wikipedia desarrolla el concepto de _"Dimensionalidad fractal"_.
+
+- Leer más: [Patrones que se encuentran en la naturaleza | National Geographic](https://www.nationalgeographic.com.es/ciencia/fractales-patrones-que-se-encuentran-naturaleza_20807)

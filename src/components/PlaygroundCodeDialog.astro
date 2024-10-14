@@ -1,0 +1,30 @@
+---
+import { Markdown as Md } from "@astropub/md";
+import Markdown from "./Markdown.astro";
+
+interface Props {
+  title: string;
+  code: string;
+}
+
+const { title, code } = Astro.props;
+---
+
+<dialog
+  id="code-dialog"
+  class="relative h-full max-h-screen overflow-hidden bg-transparent py-4 text-neutral-700 backdrop:bg-neutral-950/50 dark:text-neutral-300 sm:p-4"
+>
+  <div
+    class="flex h-full w-full flex-col overflow-hidden rounded-md bg-stone-200/80 p-4 font-mono dark:bg-[#121212]/80"
+  >
+    <div class="font-writer mb-2 flex items-center justify-between px-2">
+      <h2 class="font-semibold">{title} code</h2>
+      <form method="dialog">
+        <button class="text-xs">close [x]</button>
+      </form>
+    </div>
+    <Markdown as="div" class="overflow-auto">
+      <Md of={"```html\n" + `${code}` + "\n```"} />
+    </Markdown>
+  </div>
+</dialog>

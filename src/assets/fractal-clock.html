@@ -1,0 +1,136 @@
+<canvas id="fractal" width="500" height="500"></canvas>
+<span id="date"></span>
+
+<script>
+  const LENGTH = 120;
+  const LENGHT_FACTOR = 0.85;
+  const WIDTH_FACTOR = 0.85;
+  const OPACITY_FACTOR = 0.68;
+  const LINE_WIDTH = 5;
+  const LINE_OPACITY = 1;
+
+  const dateElement = document.getElementById("date");
+  const canvas = document.getElementById("fractal");
+  const parent = canvas.parentNode;
+
+  const width = parent.offsetWidth;
+  const height = parent.offsetHeight;
+
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext("2d");
+  ctx.lineCap = "round";
+
+  const drawLine = (x, y, len, angle, lineWidth, lineOpacity, date) => {
+    ctx.lineWidth = lineWidth;
+    ctx.globalAlpha = lineOpacity;
+
+    ctx.beginPath();
+    ctx.save();
+
+    ctx.translate(x, y);
+    ctx.rotate((angle * Math.PI) / 180);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, -len);
+    ctx.stroke();
+
+    if (len > 20 && lineWidth > 1 && lineOpacity > 0.035) {
+      const { minutes, seconds } = getAnglesFromDate(date);
+      drawLine(
+        0,
+        -len,
+        len * LENGHT_FACTOR,
+        minutes,
+        lineWidth * WIDTH_FACTOR,
+        lineOpacity * OPACITY_FACTOR,
+        date,
+      );
+      drawLine(
+        0,
+        -len,
+        len * LENGHT_FACTOR,
+        seconds,
+        lineWidth * WIDTH_FACTOR,
+        lineOpacity * OPACITY_FACTOR,
+        date,
+      );
+    }
+    ctx.restore();
+  };
+
+  const getAnglesFromDate = (date) => {
+    const hours_ = date.getHours() % 12;
+    const minutes_ = date.getMinutes();
+    const seconds_ = date.getSeconds();
+    const milliseconds_ = date.getMilliseconds();
+
+    const hours =
+      (hours_ +
+        minutes_ / 60 +
+        seconds_ / 60 / 60 +
+        milliseconds_ / 60 / 60 / 1000) *
+      30;
+    const minutes = (minutes_ + seconds_ / 60 + milliseconds_ / 60 / 1000) * 6;
+    const seconds = (seconds_ + milliseconds_ / 1000) * 6;
+    return { hours, minutes, seconds };
+  };
+
+  const drawDate = (date) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const { hours, minutes, seconds } = getAnglesFromDate(date);
+
+    if (document.documentElement.classList.contains("dark")) {
+      ctx.strokeStyle = "#e7e5e4";
+    } else {
+      ctx.strokeStyle = "#121212";
+    }
+
+    drawLine(
+      canvas.width / 2,
+      canvas.height / 2,
+      LENGTH,
+      hours,
+      LINE_WIDTH,
+      LINE_OPACITY,
+      date,
+    );
+    drawLine(
+      canvas.width / 2,
+      canvas.height / 2,
+      LENGTH,
+      minutes,
+      LINE_WIDTH,
+      LINE_OPACITY,
+      date,
+    );
+    drawLine(
+      canvas.width / 2,
+      canvas.height / 2,
+      LENGTH,
+      seconds,
+      LINE_WIDTH,
+      LINE_OPACITY,
+      date,
+    );
+  };
+
+  // const date = new Date("1995-12-17T02:51:14.300");
+  // drawDate(date);
+
+  const animate = () => {
+    const date = new Date();
+    dateElement.innerHTML = date
+      .toISOString()
+      .replace("T", " ")
+      .substring(0, date.toISOString().length - 1);
+    drawDate(date);
+    requestAnimationFrame(animate);
+  };
+  requestAnimationFrame(animate);
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = canvas.parentNode.offsetHeight;
+  });
+</script>

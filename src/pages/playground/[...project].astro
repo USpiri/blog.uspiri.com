@@ -1,0 +1,132 @@
+---
+import Footer from "@components/Footer.astro";
+import Main from "@components/Main.astro";
+import Markdown from "@components/Markdown.astro";
+import PlaygroundNavbar from "@components/PlaygroundNavbar.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { cn } from "@utils/cn";
+import PlaygroundCodeDialog from "@components/PlaygroundCodeDialog.astro";
+
+export const getStaticPaths = async () => {
+  const projects = await getCollection("project");
+  return projects.map((project) => ({
+    params: {
+      project: project.slug,
+    },
+    props: { project },
+  }));
+};
+
+interface Props {
+  project: CollectionEntry<"project">;
+}
+
+const { project } = Astro.props;
+const { file, title, cssclasses } = project.data;
+const { Content } = await project.render();
+
+const { Project } = await import(/* @vite-ignore */ "/src/assets/" + file).then(
+  (file) => ({
+    Project: file.default,
+  }),
+);
+---
+
+<BaseLayout title={title} class="mb-5">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+"
+    crossorigin="anonymous"
+    slot="katex-meta"
+  />
+
+  <PlaygroundNavbar title={title} />
+  <PlaygroundCodeDialog title={title} code={Project({}).toString()} />
+
+  <div
+    class="canvas-wrapper relative -z-10 min-h-[85vh] w-full overflow-x-hidden"
+  >
+    <div class="fixed h-dvh w-full">
+      <Project />
+    </div>
+  </div>
+
+  <Main
+    class="max-w-5xl rounded-md bg-stone-200/80 px-4 pb-28 pt-12 dark:bg-[#121212]/80"
+  >
+    <Markdown class={cn("mx-auto max-w-3xl", cssclasses)}>
+      <Content />
+    </Markdown>
+  </Main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const button = document.querySelector("#code");
+  const dialog = document.querySelector<HTMLDialogElement>("#code-dialog");
+
+  button?.addEventListener("click", () => {
+    dialog?.showModal();
+  });
+
+  dialog?.addEventListener("click", (event) => {
+    var rect = dialog.getBoundingClientRect();
+    var isInDialog =
+      rect.top <= event.clientY &&
+      event.clientY <= rect.top + rect.height &&
+      rect.left <= event.clientX &&
+      event.clientX <= rect.left + rect.width;
+    if (!isInDialog) {
+      dialog.close();
+    }
+  });
+</script>
+
+<style is:global>
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  .canvas-wrapper {
+    span {
+      @apply fixed left-1/2 top-1/2 m-3 origin-center font-mono text-xs font-bold sm:text-sm;
+    }
+  }
+
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 70dvh;
+  }
+
+  main {
+    animation: article-opacity 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 70dvh;
+  }
+
+  nav {
+    @apply bg-stone-200/80 dark:bg-[#121212]/90;
+  }
+
+  @keyframes nav-shadown {
+    0% {
+      @apply bg-stone-200/0 dark:bg-[#121212]/0;
+    }
+    to {
+      @apply backdrop-blur;
+    }
+  }
+
+  @keyframes article-opacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100;
+    }
+  }
+</style>

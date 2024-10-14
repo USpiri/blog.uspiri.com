@@ -1,0 +1,84 @@
+---
+import Main from "@components/Main.astro";
+import PlaygroundListItem from "@components/PlaygroundListItem.astro";
+import SectionHeading from "@components/SectionHeading.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("project");
+---
+
+<Layout title="Playground">
+  <Main class="mb-40 mt-16 flex flex-col gap-5 sm:mt-24">
+    <SectionHeading title="Playground" />
+    <p class="text-sm sm:w-3/4">
+      Where I can explore concepts, <strong>experiment</strong> with code, and build
+      interactive projects to showcase different ideas or concepts.
+    </p>
+    <ul class="divide-y divide-neutral-300 dark:divide-neutral-800">
+      {
+        projects.map((project) => (
+          <li>
+            <PlaygroundListItem
+              title={project.data.title}
+              date={new Date(project.data.date)}
+              href={`/playground/${project.slug}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </Main>
+</Layout>
+
+<style>
+  li {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+
+    &.show {
+      opacity: 1;
+    }
+    a.group {
+      & > div {
+        height: 0;
+        width: 320px;
+        aspect-ratio: 16/9;
+        transition: height ease-in-out 200ms;
+      }
+      &:hover > div {
+        height: 188px;
+      }
+    }
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  import { scrambleEffect } from "@utils/scramble";
+  const listItems = document.querySelectorAll("ul > li");
+  const title = document.querySelector("h1");
+
+  listItems.forEach((li, i) => {
+    setTimeout(() => {
+      const title = li.querySelector(".project-title");
+      const date = li.querySelector(".project-date");
+      li.classList.add("show");
+
+      if (title && date) {
+        scrambleEffect(title, 400);
+        scrambleEffect(date, 400);
+      }
+    }, 100 * i);
+  });
+
+  if (title) scrambleEffect(title!, 300);
+</script>

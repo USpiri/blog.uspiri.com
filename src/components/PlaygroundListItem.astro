@@ -1,0 +1,37 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+interface Props {
+  href: string;
+  title: string;
+  image?: string;
+  date: Date;
+}
+
+const { href, title, image, date } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group relative flex items-center gap-2 py-1.5 font-mono"
+  title={`${title} playground`}
+>
+  {
+    image && (
+      <div class="invisible absolute left-0 top-full z-10 mt-1 rounded-md border border-dashed border-neutral-400 bg-stone-200 p-1 group-hover:visible dark:bg-[#121212] lg:right-full 2xl:left-[unset] 2xl:top-0 2xl:mx-3">
+        <img src={image} class="h-full w-full rounded object-cover" />
+      </div>
+    )
+  }
+  <h2 class="flex-1 truncate">
+    <span
+      class="project-title truncate text-base font-semibold decoration-dashed underline-offset-4 group-hover:underline sm:text-lg"
+    >
+      {title}
+    </span>
+  </h2>
+  <span
+    class="project-date text-nowrap text-xs text-neutral-500 dark:text-neutral-400 sm:text-sm"
+  >
+    <FormattedDate date={date} />
+  </span>
+</a>
