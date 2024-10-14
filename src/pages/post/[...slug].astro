@@ -7,6 +7,7 @@ import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { sortPosts } from "@utils/sort";
+import Markdown from "@components/Markdown.astro";
 
 export const getStaticPaths = async () => {
   const posts = sortPosts(await getCollection("post"));
@@ -67,9 +68,9 @@ const { Content } = await post.render();
     </div>
   </div>
 
-  <main>
+  <Markdown>
     <Content />
-  </main>
+  </Markdown>
 </MarkdownLayout>
 
 <script>

@@ -1,0 +1,96 @@
+---
+import { cn } from "@utils/cn";
+
+interface Props {
+  as?: string;
+  class?: string;
+}
+
+const { as = "main", class: className } = Astro.props;
+const Element = as;
+---
+
+<Element
+  class={cn("mark-article max-w-[unset] relative w-full prose", className)}
+>
+  <slot />
+</Element>
+
+<style is:global>
+  .mark-article {
+    /* Hr */
+    @apply prose-hr:border-neutral-300 dark:prose-hr:border-neutral-600;
+    /* font */
+    @apply prose-sm prose-neutral dark:prose-invert sm:prose-base;
+    /* headings */
+    @apply prose-headings:font-mono prose-headings:text-neutral-600 dark:prose-headings:text-neutral-300;
+    @apply prose-h1:font-[650];
+    /* code */
+    @apply prose-code:before:contents prose-code:after:contents prose-pre:relative;
+    /* image */
+    @apply prose-img:rounded;
+
+    code {
+      &:not(pre code) {
+        @apply rounded-md bg-stone-100 px-1 dark:bg-neutral-800;
+        font-weight: initial !important;
+      }
+    }
+
+    pre[data-language="txt"] {
+      text-wrap: wrap;
+    }
+
+    .copy-button {
+      @apply absolute end-2 top-2 rounded p-1 text-neutral-400 transition-all duration-100 hover:text-neutral-500 dark:border-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300;
+    }
+
+    .copy-icon {
+      @apply h-3.5 w-3.5 sm:h-4 sm:w-4;
+    }
+  }
+
+  html.dark .astro-code,
+  html.dark .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  .astro-code {
+    background-color: #f0efee !important;
+  }
+</style>
+
+<script>
+  const check = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><path d="M20 6 9 17l-5-5"/></svg>`;
+  const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+  let blocks = document.querySelectorAll("pre");
+
+  const copyCode = async (block: any, button: any) => {
+    let code = block.querySelector("code");
+    let text = code.innerText;
+    await navigator.clipboard.writeText(text);
+    button.innerHTML = check;
+    setTimeout(() => {
+      button.innerHTML = icon;
+    }, 1000);
+  };
+
+  blocks.forEach(async (block) => {
+    if (navigator.clipboard) {
+      let button = document.createElement("button");
+
+      button.innerHTML = icon;
+      button.className = "copy-button";
+      block.appendChild(button);
+
+      button.addEventListener("click", async () => {
+        await copyCode(block, button);
+      });
+    }
+  });
+</script>
