@@ -1,6 +1,13 @@
 ---
+import { cn } from "@utils/cn";
 import MoonIcon from "./icons/MoonIcon.astro";
 import SunIcon from "./icons/SunIcon.astro";
+
+interface Props {
+  iconClass?: string;
+}
+
+const { iconClass } = Astro.props;
 ---
 
 <button
@@ -8,8 +15,8 @@ import SunIcon from "./icons/SunIcon.astro";
   title="Toggle theme"
   class="transition-colors hover:text-neutral-400 dark:hover:text-neutral-500 sm:hover:animate-spin"
 >
-  <SunIcon id="sun-icon" class="hidden h-5 w-5" />
-  <MoonIcon id="moon-icon" class="hidden h-5 w-5" />
+  <SunIcon id="sun-icon" class={cn("hidden h-5 w-5" + iconClass)} />
+  <MoonIcon id="moon-icon" class={cn("hidden h-5 w-5", iconClass)} />
 </button>
 
 <script>
