@@ -1,9 +1,4 @@
 ---
-import DocumentIcon from "./icons/DocumentIcon.astro";
-import GithubIcon from "./icons/GithubIcon.astro";
-import LinkedinIcon from "./icons/LinkedinIcon.astro";
-import XIcon from "./icons/XIcon.astro";
-import LinkIcon from "./LinkIcon.astro";
 import ThemeButton from "./ThemeButton.astro";
 
 const currentPath = Astro.url.pathname.split("/")[1];
@@ -32,22 +27,5 @@ const currentPath = Astro.url.pathname.split("/")[1];
       )
     }
   </div>
-  <div class="flex items-center gap-3">
-    <LinkIcon title="Cv" href="https://cv.uspiri.com/">
-      <DocumentIcon class="h-4 w-4" />
-    </LinkIcon>
-    <LinkIcon title="Github" href="https://github.com/USpiri/">
-      <GithubIcon class="h-4 w-4" />
-    </LinkIcon>
-    <LinkIcon title="X (Twitter)" href="https://x.com/urielspiridione/">
-      <XIcon class="h-4 w-4" />
-    </LinkIcon>
-    <LinkIcon
-      title="Linkedin"
-      href="https://www.linkedin.com/in/urielspiridione/"
-    >
-      <LinkedinIcon class="h-4 w-4" />
-    </LinkIcon>
-    <ThemeButton />
-  </div>
+  <ThemeButton />
 </nav>

@@ -1,9 +1,36 @@
-<footer class="mx-auto max-w-3xl text-center font-mono text-sm">
+---
+import DocumentIcon from "./icons/DocumentIcon.astro";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedinIcon from "./icons/LinkedinIcon.astro";
+import XIcon from "./icons/XIcon.astro";
+import LinkIcon from "./LinkIcon.astro";
+---
+
+<footer
+  class="mx-auto flex max-w-3xl flex-col items-center gap-6 font-mono text-sm"
+>
   <a
     href="https://uspiri.com/"
     target="_blank"
-    class="inline-block bg-gradient-to-r from-neutral-400 to-neutral-400 bg-clip-text font-semibold text-transparent hover:text-neutral-600 dark:from-neutral-600 dark:to-neutral-600 dark:hover:text-neutral-400"
+    class="inline-block bg-gradient-to-r from-neutral-300 to-neutral-300 bg-clip-text font-semibold text-transparent hover:text-neutral-600 dark:from-neutral-600 dark:to-neutral-600 dark:hover:text-neutral-400"
   >
     uspiri.com
   </a>
+  <div class="flex items-center gap-5">
+    <LinkIcon title="Cv" href="https://cv.uspiri.com/">
+      <DocumentIcon class="h-4 w-4" />
+    </LinkIcon>
+    <LinkIcon title="Github" href="https://github.com/USpiri/">
+      <GithubIcon class="h-4 w-4" />
+    </LinkIcon>
+    <LinkIcon title="X (Twitter)" href="https://x.com/urielspiridione/">
+      <XIcon class="h-4 w-4" />
+    </LinkIcon>
+    <LinkIcon
+      title="Linkedin"
+      href="https://www.linkedin.com/in/urielspiridione/"
+    >
+      <LinkedinIcon class="h-4 w-4" />
+    </LinkIcon>
+  </div>
 </footer>
