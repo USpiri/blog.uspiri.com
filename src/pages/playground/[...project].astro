@@ -27,11 +27,9 @@ const { project } = Astro.props;
 const { file, title, cssclasses } = project.data;
 const { Content } = await project.render();
 
-const { Project } = await import(/* @vite-ignore */ "/src/assets/" + file).then(
-  (file) => ({
-    Project: file.default,
-  }),
-);
+const projects = Object.values(import.meta.glob("../../assets/*.html"));
+const projectHTML = projects.find((p: any) => p.name.includes(file))!;
+const Project = ((await projectHTML()) as any).default;
 ---
 
 <BaseLayout title={title} class="mb-5">
@@ -44,7 +42,7 @@ const { Project } = await import(/* @vite-ignore */ "/src/assets/" + file).then(
   />
 
   <PlaygroundNavbar title={title} />
-  <PlaygroundCodeDialog title={title} code={Project({}).toString()} />
+  <PlaygroundCodeDialog title={title} code={Project.toString()} />
 
   <div
     class="canvas-wrapper relative -z-10 min-h-[85vh] w-full overflow-x-hidden"
