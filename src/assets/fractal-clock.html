@@ -37,7 +37,11 @@
     ctx.lineTo(0, -len);
     ctx.stroke();
 
-    if (len > 20 && lineWidth > (isMobile ? 1.37 : 1) && lineOpacity > 0.035) {
+    if (
+      len > 20 &&
+      lineWidth > (isMobile ? 1.37 : 1) &&
+      lineOpacity > (isMobile ? 0.07 : 0.035)
+    ) {
       drawLine(
         0,
         -len,
