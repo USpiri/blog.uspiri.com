@@ -22,7 +22,7 @@
   const ctx = canvas.getContext("2d");
   ctx.lineCap = "round";
 
-  const drawLine = (x, y, len, angle, lineWidth, lineOpacity, date) => {
+  const drawLine = (x, y, len, angle, lineWidth, lineOpacity, dateAngles) => {
     ctx.lineWidth = lineWidth;
     ctx.globalAlpha = lineOpacity;
 
@@ -36,24 +36,23 @@
     ctx.stroke();
 
     if (len > 20 && lineWidth > 1 && lineOpacity > 0.035) {
-      const { minutes, seconds } = getAnglesFromDate(date);
       drawLine(
         0,
         -len,
         len * LENGHT_FACTOR,
-        minutes,
+        dateAngles.minutes,
         lineWidth * WIDTH_FACTOR,
         lineOpacity * OPACITY_FACTOR,
-        date,
+        dateAngles,
       );
       drawLine(
         0,
         -len,
         len * LENGHT_FACTOR,
-        seconds,
+        dateAngles.seconds,
         lineWidth * WIDTH_FACTOR,
         lineOpacity * OPACITY_FACTOR,
-        date,
+        dateAngles,
       );
     }
     ctx.restore();
@@ -78,7 +77,8 @@
 
   const drawDate = (date) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const { hours, minutes, seconds } = getAnglesFromDate(date);
+    const dateAngles = getAnglesFromDate(date);
+    const { hours, minutes, seconds } = dateAngles;
 
     if (document.documentElement.classList.contains("dark")) {
       ctx.strokeStyle = "#e7e5e4";
@@ -93,7 +93,7 @@
       hours,
       LINE_WIDTH,
       LINE_OPACITY,
-      date,
+      dateAngles,
     );
     drawLine(
       canvas.width / 2,
@@ -102,7 +102,7 @@
       minutes,
       LINE_WIDTH,
       LINE_OPACITY,
-      date,
+      dateAngles,
     );
     drawLine(
       canvas.width / 2,
@@ -111,7 +111,7 @@
       seconds,
       LINE_WIDTH,
       LINE_OPACITY,
-      date,
+      dateAngles,
     );
   };
 
