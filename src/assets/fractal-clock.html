@@ -19,6 +19,8 @@
   canvas.width = width;
   canvas.height = height;
 
+  let isMobile = width <= 640;
+
   const ctx = canvas.getContext("2d");
   ctx.lineCap = "round";
 
@@ -35,7 +37,7 @@
     ctx.lineTo(0, -len);
     ctx.stroke();
 
-    if (len > 20 && lineWidth > 1 && lineOpacity > 0.035) {
+    if (len > 20 && lineWidth > (isMobile ? 1.37 : 1) && lineOpacity > 0.035) {
       drawLine(
         0,
         -len,
@@ -132,5 +134,6 @@
   window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = canvas.parentNode.offsetHeight;
+    isMobile = window.innerWidth <= 640;
   });
 </script>
