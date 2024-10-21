@@ -22,7 +22,6 @@
   let isMobile = width <= 640;
 
   const ctx = canvas.getContext("2d");
-  ctx.lineCap = "round";
 
   const drawLine = (x, y, len, angle, lineWidth, lineOpacity, dateAngles) => {
     ctx.lineWidth = lineWidth;
@@ -46,7 +45,7 @@
         0,
         -len,
         len * LENGHT_FACTOR,
-        dateAngles.minutes,
+        dateAngles.minutes - 90,
         lineWidth * WIDTH_FACTOR,
         lineOpacity * OPACITY_FACTOR,
         dateAngles,
@@ -55,7 +54,7 @@
         0,
         -len,
         len * LENGHT_FACTOR,
-        dateAngles.seconds,
+        dateAngles.seconds - 90,
         lineWidth * WIDTH_FACTOR,
         lineOpacity * OPACITY_FACTOR,
         dateAngles,
@@ -120,9 +119,6 @@
       dateAngles,
     );
   };
-
-  // const date = new Date("1995-12-17T02:51:14.300");
-  // drawDate(date);
 
   const animate = () => {
     const date = new Date();
